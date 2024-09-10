@@ -1,0 +1,273 @@
+
+// Usuario Domain
+@Entity
+@Table(name = "usuario")
+@Data // Lombok para getters, setters, toString, etc.
+@NoArgsConstructor
+@AllArgsConstructor
+public class Usuario {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false, length = 100)
+    private String nombre;
+
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
+
+    @Column(nullable = false, length = 255)
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id", nullable = false)
+    private Rol rol;
+}
+
+// UsuarioDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UsuarioDTO {
+    
+    private Integer id;
+    private String nombre;
+    private String email;
+    private String password; // Si es necesario incluir en DTO, usualmente no se devuelve
+    private RolDTO rol;
+}
+
+// Rol Domain
+@Entity
+@Table(name = "rol")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Rol {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false, unique = true, length = 50)
+    private String nombre;
+
+    @Column(length = 255)
+    private String descripcion;
+}
+
+// RolDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RolDTO {
+
+    private Integer id;
+    private String nombre;
+    private String descripcion;
+}
+
+// Permiso Domain
+@Entity
+@Table(name = "permiso")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Permiso {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false, unique = true, length = 100)
+    private String nombre;
+
+    @Column(length = 255)
+    private String descripcion;
+}
+
+// PermisoDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PermisoDTO {
+
+    private Integer id;
+    private String nombre;
+    private String descripcion;
+}
+
+// RolPermiso Domain
+@Entity
+@Table(name = "rol_permiso")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@IdClass(RolPermisoId.class) // Clave compuesta
+public class RolPermiso {
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "permiso_id")
+    private Permiso permiso;
+}
+
+// RolPermisoDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RolPermisoDTO {
+
+    private RolDTO rol;
+    private PermisoDTO permiso;
+}
+
+// Habitacion Domain
+@Entity
+@Table(name = "habitacion")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Habitacion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false, unique = true)
+    private Integer numero;
+
+    @Column(nullable = false, length = 50)
+    private String tipo;
+
+    @Column(nullable = false)
+    private Boolean disponibilidad;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal precio;
+}
+
+// HabitacionDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class HabitacionDTO {
+
+    private Integer id;
+    private Integer numero;
+    private String tipo;
+    private Boolean disponibilidad;
+    private BigDecimal precio;
+}
+
+// Reserva Domain
+@Entity
+@Table(name = "reserva")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Reserva {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @Column(nullable = false)
+    private LocalDateTime fechaCreacion;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal total;
+}
+
+// ReservaDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ReservaDTO {
+
+    private Integer id;
+    private UsuarioDTO usuario;
+    private LocalDateTime fechaCreacion;
+    private BigDecimal total;
+}
+
+// DetalleReserva Domain
+@Entity
+@Table(name = "detalle_reserva")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class DetalleReserva {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "reserva_id", nullable = false)
+    private Reserva reserva;
+
+    @ManyToOne
+    @JoinColumn(name = "habitacion_id", nullable = false)
+    private Habitacion habitacion;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal precio;
+}
+
+// DetalleReservaDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class DetalleReservaDTO {
+
+    private Integer id;
+    private ReservaDTO reserva;
+    private HabitacionDTO habitacion;
+    private BigDecimal precio;
+}
+
+// Notificacion Domain
+@Entity
+@Table(name = "notificacion")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Notificacion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @Column(nullable = false)
+    private String mensaje;
+
+    @Column(nullable = false)
+    private LocalDateTime fechaEnvio;
+}
+
+// NotificacionDTO
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class NotificacionDTO {
+
+    private Integer id;
+    private UsuarioDTO usuario;
+    private String mensaje;
+    private LocalDateTime fechaEnvio;
+}

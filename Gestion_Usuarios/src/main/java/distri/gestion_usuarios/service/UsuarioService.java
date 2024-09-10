@@ -1,4 +1,4 @@
-package service;
+package distri.gestion_usuarios.service;
 
 
 import distri.beans.domain.Usuario;
@@ -6,7 +6,7 @@ import distri.beans.dto.UsuarioDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UsuarioRepository;
+import distri.gestion_usuarios.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;

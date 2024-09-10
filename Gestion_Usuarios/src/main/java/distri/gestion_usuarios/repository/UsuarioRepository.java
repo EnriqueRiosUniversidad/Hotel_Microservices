@@ -1,4 +1,4 @@
-package repository;
+package distri.gestion_usuarios.repository;
 
 import distri.beans.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

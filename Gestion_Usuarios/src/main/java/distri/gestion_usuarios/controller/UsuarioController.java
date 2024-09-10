@@ -1,11 +1,11 @@
-package controller;
+package distri.gestion_usuarios.controller;
 
 
 import distri.beans.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.UsuarioService;
+import distri.gestion_usuarios.service.UsuarioService;
 
 import java.util.List;
 

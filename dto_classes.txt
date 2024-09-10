@@ -1,0 +1,159 @@
+package distri.beans.dto;
+
+import java.io.Serializable;
+
+public class BaseDTO implements Serializable {
+}
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Detalle_ReservaDTO extends BaseDTO{
+
+    private Integer id;
+    private ReservaDTO reserva;
+    private HabitacionDTO habitacion;
+    private BigDecimal precio;
+}
+
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class HabitacionDTO extends BaseDTO{
+
+    private Integer id;
+    private Integer numero;
+    private String tipo;
+    private Boolean disponibilidad;
+    private BigDecimal precio;
+}
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class NotificacionDTO {
+
+    private Integer id;
+    private UsuarioDTO usuario;
+    private String mensaje;
+    private LocalDateTime fechaEnvio;
+}
+
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PermisoDTO extends BaseDTO {
+
+    private Integer id;
+    private String nombre;
+    private String descripcion;
+}
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ReservaDTO extends BaseDTO{
+
+    private Integer id;
+    private UsuarioDTO usuario;
+    private LocalDateTime fechaCreacion;
+    private BigDecimal total;
+}
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RolDTO extends BaseDTO {
+
+    private Integer id;
+    private String nombre;
+    private String descripcion;
+}
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Rol_PermisoDTO extends BaseDTO {
+
+    private RolDTO rol;
+    private PermisoDTO permiso;
+}
+
+
+package distri.beans.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UsuarioDTO extends BaseDTO {
+
+    private Integer id;
+    private String nombre;
+    private String email;
+    private String password; // Si es necesario incluir en DTO, usualmente no se devuelve
+    private RolDTO rol;
+}

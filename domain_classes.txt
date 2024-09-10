@@ -1,0 +1,320 @@
+package distri.beans.domain;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.ColumnDefault;
+import java.time.LocalDateTime;
+
+@MappedSuperclass // Anotación que indica que esta clase no se mapeará a una tabla, pero sus campos serán heredados.
+@Data
+@NoArgsConstructor
+public abstract class BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @CreationTimestamp
+    @Column(name = "createdAt", nullable = false, updatable = false, columnDefinition = "timestamp(0) without time zone")
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updatedAt", nullable = false, columnDefinition = "timestamp(0) without time zone")
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    private LocalDateTime updatedAt;
+
+    @Column(name = "deleted", nullable = false)
+    @ColumnDefault("false")
+    private Boolean deleted;
+}
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Entity
+@Table(name = "detalle_reserva")
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Detalle_Reserva extends BaseEntity{
+
+    @ManyToOne
+    @JoinColumn(name = "reserva_id" , nullable = false)
+    private Reserva reserva;
+
+    @ManyToOne
+    @JoinColumn(name = "habitacion_id", nullable = false)
+    private Habitacion habitacion;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    BigDecimal precio;
+
+}
+
+
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = "habitacion")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Habitacion extends BaseEntity{
+
+    @NotBlank(message = "Numero de habitacio requerido. ")
+    @Column(name = "numero" , nullable= false)
+    private int numero;
+
+    @NotBlank(message = "Tipo de habitacio requerido. ")
+    @Column(name="tipo", nullable= false)
+    private String tipo;
+
+    @NotNull(message = "Disponibilidad de habitacion requerida. ")
+    @Column(name = "disponibilidad" , nullable= false)
+    private boolean disponibilidad;
+
+    @NotNull(message = "Precio de habitacion requerido. ")
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal precio;
+}
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = "notificacion")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Notificacion extends BaseEntity{
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @Column(nullable = false)
+    private String mensaje;
+
+    @Column(nullable = false, columnDefinition = "timestamp(0) without time zone")
+    private LocalDateTime fechaEnvio;
+}
+
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = "permiso")
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Permiso
+        extends BaseEntity {
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
+
+}
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+@Entity
+@Table(name = "reserva")
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+public class Reserva extends BaseEntity{
+
+    @ManyToOne
+    @JoinColumn(name="usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @Column(nullable = false, columnDefinition = "timestamp(0) without time zone")
+    private LocalDateTime fechaCreacion;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal total;
+
+
+}
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "rol")
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+public class Rol extends BaseEntity{
+
+    @NotBlank(message = "nombre de ROL no puede estar ne blanco. ")
+    @Column(nullable = false, unique = true, length = 50)
+    private String nombre;
+
+    @Column(length = 255)
+    private String descripcion;
+}
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+/*
+* No extiende de BaseDir, debido a
+* 1- el Primary key es el rol y permiso id
+* 2- No necesito fechas de creacion o actualizacion esto sera HardCode
+* */
+
+@Entity
+@Table(name = "rol_permiso")
+// Indica que la clave primaria está definida en RolPermisoId
+@IdClass(Rol_Permiso.class)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Rol_Permiso {
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    @NotNull(message = "El rol no puede ser nulo.")
+    private Rol rol;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "permiso_id")
+    @NotNull(message = "El permiso no puede ser nulo.")
+    private Permiso permiso;
+
+}
+
+
+package distri.beans.domain;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+public class RolPermisoId implements Serializable {
+
+    private Integer rol;  // Tipo y nombre deben coincidir con los campos en la entidad
+    private Integer permiso;
+
+    public RolPermisoId() {}
+
+    public RolPermisoId(Integer rol, Integer permiso) {
+        this.rol = rol;
+        this.permiso = permiso;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RolPermisoId that = (RolPermisoId) o;
+        return Objects.equals(rol, that.rol) && Objects.equals(permiso, that.permiso);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rol, permiso);
+    }
+}
+
+
+
+package distri.beans.domain;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "usuario")
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+public class Usuario extends BaseEntity {
+
+    @NotNull(message = "nombre de usuario requerida. ")
+    @Column(nullable = false, length = 100)
+    private String nombre;
+
+    @NotNull(message = "email de usuario requerida. ")
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
+
+    @NotNull(message = "password de usuario requerida. ")
+    @Column(nullable = false, length = 255)
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id", nullable = false)
+    private Rol rol;
+}

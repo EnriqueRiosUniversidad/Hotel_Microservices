@@ -2,6 +2,7 @@ distri/beans/domain/BaseEntity.class
 distri/beans/dto/PermisoDTO.class
 distri/beans/domain/Notificacion.class
 distri/beans/dto/Rol_PermisoDTO.class
+distri/beans/AppConfig.class
 distri/beans/dto/RolDTO.class
 distri/beans/domain/Rol.class
 distri/beans/dto/UsuarioDTO.class

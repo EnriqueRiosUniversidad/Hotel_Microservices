@@ -1,2 +1,5 @@
 distri/gestion_usuarios/GestionUsuariosApplication.class
-distri/gestion_usuarios/prueba.class
+controller/UsuarioController.class
+service/UsuarioService.class
+repository/UsuarioRepository.class
+SecurityConfig.class

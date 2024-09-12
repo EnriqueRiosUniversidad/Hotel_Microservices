@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: distri.gestion_usuarios.GestionUsuariosApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.438 s -- in distri.gestion_usuarios.GestionUsuariosApplicationTests

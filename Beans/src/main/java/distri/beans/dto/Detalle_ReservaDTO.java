@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Detalle_ReservaDTO extends BaseDTO{
 
-    private Integer id;
+    private Long id;
     private ReservaDTO reserva;
     private HabitacionDTO habitacion;
     private BigDecimal precio;

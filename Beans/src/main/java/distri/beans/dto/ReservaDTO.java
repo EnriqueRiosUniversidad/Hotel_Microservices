@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ReservaDTO extends BaseDTO{
 
-    private Integer id;
+    private Long id;
     private UsuarioDTO usuario;
     private LocalDateTime fechaCreacion;
     private BigDecimal total;

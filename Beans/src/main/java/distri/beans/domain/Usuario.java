@@ -2,15 +2,14 @@ package distri.beans.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "usuario")
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Usuario extends BaseEntity {
 
     @NotNull(message = "nombre de usuario requerida. ")
@@ -28,4 +27,6 @@ public class Usuario extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "rol_id", nullable = false)
     private Rol rol;
+
+
 }

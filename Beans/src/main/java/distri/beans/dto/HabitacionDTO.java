@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class HabitacionDTO extends BaseDTO{
 
-    private Integer id;
+    private Long id;
     private Integer numero;
     private String tipo;
     private Boolean disponibilidad;

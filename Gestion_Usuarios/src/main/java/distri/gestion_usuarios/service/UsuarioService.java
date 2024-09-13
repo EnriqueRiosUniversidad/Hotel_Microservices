@@ -6,14 +6,15 @@ import distri.beans.dto.RolDTO;
 import distri.beans.dto.UsuarioDTO;
 import distri.gestion_usuarios.repository.RolRepository;
 import distri.gestion_usuarios.repository.UsuarioRepository;
+import org.springframework.cache.annotation.Cacheable;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -47,14 +48,12 @@ public class UsuarioService {
         return modelMapper.map(usuarioGuardado, UsuarioDTO.class);
     }
 
-    public List<UsuarioDTO> obtenerUsuarios() {
-        log.info("//// Obteniendo lista de usuarios ////");
-        return usuarioRepository.findByDeletedFalse()
-                .stream()
-                .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class))
-                .collect(Collectors.toList());
+    public Page<UsuarioDTO> obtenerUsuarios(Pageable pageable) {
+        return usuarioRepository.findByDeletedFalse(pageable)
+                .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
+    @Cacheable(value = "usuario", key = "#id")
     public UsuarioDTO obtenerUsuarioPorId(Long id) {
         log.info("//// Buscando usuario con ID: {} ////", id);
         Optional<Usuario> usuario = usuarioRepository.findByIdAndDeletedFalse(id);
@@ -65,6 +64,13 @@ public class UsuarioService {
             throw new RuntimeException("El usuario ha sido eliminado o no existe");
         }
     }
+
+    public Page<UsuarioDTO> buscarUsuariosPorNombre(String nombre, Pageable pageable) {
+        return usuarioRepository.findByNombreContainingIgnoreCaseAndDeletedFalse(nombre, pageable)
+                .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
+    }
+
+
 
     public UsuarioDTO actualizarUsuarioPorId(Long id, UsuarioDTO usuarioDTO) {
         Usuario usuarioExistente = usuarioRepository.findById(id)

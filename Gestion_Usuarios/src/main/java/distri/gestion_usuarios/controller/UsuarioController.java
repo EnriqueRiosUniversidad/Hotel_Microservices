@@ -4,11 +4,14 @@ import distri.beans.dto.UsuarioDTO;
 import distri.gestion_usuarios.service.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -18,6 +21,14 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    // Inyectar valores por defecto desde application.properties
+    @Value("${pagination.default-page-size}")
+    private int defaultPageSize;
+
+    @Value("${pagination.default-page-number}")
+    private int defaultPageNumber;
+
 
     @PostMapping
     public ResponseEntity<?> crearUsuario(@RequestBody UsuarioDTO usuarioDTO) {
@@ -31,10 +42,20 @@ public class UsuarioController {
         }
     }
 
+    // Método para obtener usuarios paginados
     @GetMapping
-    public ResponseEntity<List<UsuarioDTO>> obtenerUsuarios() {
-        log.info("//// Obteniendo todos los usuarios ////");
-        return ResponseEntity.ok(usuarioService.obtenerUsuarios());
+    public ResponseEntity<Page<UsuarioDTO>> obtenerUsuarios(
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "size", required = false) Integer size) {
+
+        // Si no se proporcionan parámetros en la solicitud HTTP, usar los valores por defecto
+        int pageNumber = (page != null) ? page : defaultPageNumber;
+        int pageSize = (size != null) ? size : defaultPageSize;
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<UsuarioDTO> usuarios = usuarioService.obtenerUsuarios(pageable);
+
+        return ResponseEntity.ok(usuarios);
     }
 
     @GetMapping("/{id}")
@@ -48,6 +69,23 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<Page<UsuarioDTO>> buscarUsuariosPorNombre(
+            @RequestParam("nombre") String nombre,
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "size", required = false) Integer size) {
+
+        int pageNumber = (page != null) ? page : defaultPageNumber;
+        int pageSize = (size != null) ? size : defaultPageSize;
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+
+        Page<UsuarioDTO> usuarios = usuarioService.buscarUsuariosPorNombre(nombre, pageable);
+        return ResponseEntity.ok(usuarios);
+    }
+
+
+
 
     @PatchMapping("/{id}")
     public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
@@ -86,7 +124,7 @@ public class UsuarioController {
             }
 
             String mensaje = usuarioService.eliminarUsuario(id, email);
-            if(mensaje.equals("Usuario no encontrado")){
+            if (mensaje.equals("Usuario no encontrado")) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensaje);
             }
 

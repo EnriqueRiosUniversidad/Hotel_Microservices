@@ -6,10 +6,12 @@ import distri.beans.dto.RolDTO;
 import distri.beans.dto.UsuarioDTO;
 import distri.gestion_usuarios.repository.RolRepository;
 import distri.gestion_usuarios.repository.UsuarioRepository;
-import org.springframework.cache.annotation.Cacheable;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,12 @@ public class UsuarioService {
     @Autowired
     private ModelMapper modelMapper;
 
+    /*
+        @Cacheable: Se usa para almacenar el resultado de métodos en el cache.
+        @CacheEvict: Para eliminar un objeto del cache.
+        @CachePut: Actualiza el valor en el cache.
+    */
+    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioDOMAIN = usuarioRepository.findByEmail(usuarioDTO.getEmail());
         if (usuarioDOMAIN.isPresent()) {
@@ -53,9 +61,11 @@ public class UsuarioService {
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-    @Cacheable(value = "usuario", key = "#id")
+
+    @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
+    //@Cacheable(value = "usuario", key = "#id")
     public UsuarioDTO obtenerUsuarioPorId(Long id) {
-        log.info("//// Buscando usuario con ID: {} ////", id);
+        log.info("//// Buscando usuario con ID: {} En la base de datos. ////", id);
         Optional<Usuario> usuario = usuarioRepository.findByIdAndDeletedFalse(id);
         if (usuario.isPresent()) {
             return modelMapper.map(usuario.get(), UsuarioDTO.class);
@@ -71,7 +81,7 @@ public class UsuarioService {
     }
 
 
-
+    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public UsuarioDTO actualizarUsuarioPorId(Long id, UsuarioDTO usuarioDTO) {
         Usuario usuarioExistente = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -99,6 +109,8 @@ public class UsuarioService {
         return modelMapper.map(usuarioGuardado, UsuarioDTO.class);
     }
 
+
+    @CacheEvict(value = "usuarios", keyGenerator = "keyGenerator")
     public String eliminarUsuario(Long id, String email) {
         try {
             Usuario usuarioEliminado = null;

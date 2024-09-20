@@ -1,0 +1,17 @@
+2024-09-20 15:56:58 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
+2024-09-20 15:57:46 [http-nio-8080-exec-3] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 6 En la base de datos. ////
+2024-09-20 15:58:34 [http-nio-8080-exec-4] INFO  d.g.service.UsuarioService - //// Usuario actualizado exitosamente con ID: 6 ////
+2024-09-20 16:14:44 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 6 En la base de datos. ////
+2024-09-20 16:15:02 [http-nio-8080-exec-3] INFO  d.g.service.UsuarioService - //// Usuario actualizado exitosamente con ID: 6 ////
+2024-09-20 16:16:43 [http-nio-8080-exec-6] INFO  d.g.service.UsuarioService - //// Usuario actualizado exitosamente con ID: 6 ////
+2024-09-20 16:22:16 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 6 En la base de datos. ////
+2024-09-20 16:22:28 [http-nio-8080-exec-2] INFO  d.g.service.UsuarioService - //// Usuario actualizado exitosamente con ID: 6 ////
+2024-09-20 16:28:20 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 6 En la base de datos. ////
+2024-09-20 16:28:27 [http-nio-8080-exec-2] INFO  d.g.service.UsuarioService - //// Usuario actualizado exitosamente con ID: 6 ////
+2024-09-20 16:30:30 [http-nio-8080-exec-3] INFO  d.g.service.UsuarioService - //// Usuario marcado como eliminado con id: 6 o email: null ////
+2024-09-20 16:30:35 [http-nio-8080-exec-4] INFO  d.g.service.UsuarioService - //// Usuario marcado como eliminado con id: 6 o email: null ////
+2024-09-20 16:30:42 [http-nio-8080-exec-5] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 6 En la base de datos. ////
+2024-09-20 16:30:43 [http-nio-8080-exec-5] WARN  d.g.service.UsuarioService - >>> Usuario con ID 6 no encontrado o ha sido eliminado <<<
+2024-09-20 16:34:10 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
+2024-09-20 16:35:23 [http-nio-8080-exec-4] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
+2024-09-20 16:49:34 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////

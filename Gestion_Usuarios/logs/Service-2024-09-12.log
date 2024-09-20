@@ -1,9 +1,0 @@
-2024-09-12 10:20:19 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 19:26:37 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 19:30:21 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 20:13:35 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 20:16:18 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 20:16:33 [http-nio-8080-exec-2] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 20:17:11 [http-nio-8080-exec-3] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 20:17:20 [http-nio-8080-exec-4] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////
-2024-09-12 20:18:23 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 1 ////

@@ -64,9 +64,8 @@ public class HabitacionController {
     @PatchMapping("/{id}")
     public ResponseEntity<HabitacionDTO> actualizarHabitacion(
             @PathVariable Long id, @RequestBody HabitacionDTO habitacionDTO) {
-        Optional<HabitacionDTO> habitacionActualizada = habitacionService.actualizarHabitacion(id, habitacionDTO);
-        return habitacionActualizada.map(ResponseEntity::ok)
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        HabitacionDTO habitacionActualizada = habitacionService.actualizarHabitacion(id, habitacionDTO);
+        return ResponseEntity.ok(habitacionActualizada);
     }
 
     /* 7. Eliminar una habitación (eliminación suave) */

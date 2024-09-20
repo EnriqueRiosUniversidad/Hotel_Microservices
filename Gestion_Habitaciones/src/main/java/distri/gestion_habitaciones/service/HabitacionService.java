@@ -70,32 +70,31 @@ public class HabitacionService {
     }
 
     // Devolver la habitación actualizada como DTO si no encuentra retornar vacío
-    public Optional<HabitacionDTO> actualizarHabitacion(Long id, HabitacionDTO habitacionDTO) {
-        // Buscar la habitación por ID y asegurarse de que no esté eliminada
-        Optional<Habitacion> habitacionExistente = habitacionRepository.findByIdAndDeletedFalse(id);
+    public HabitacionDTO actualizarHabitacion(Long id, HabitacionDTO habitacionDTO) {
 
-        if (habitacionExistente.isPresent()) {
-            Habitacion habitacion = habitacionExistente.get();
+
+        Habitacion habitacionExistente = habitacionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Habitacion no encontrado"));
+
+        System.out.println(habitacionExistente);
 
             // Verificar cada campo del DTO y actualizar solo si no es null
             if (habitacionDTO.getNumero() != null) {
-                habitacion.setNumero(habitacionDTO.getNumero());
+                habitacionExistente.setNumero(habitacionDTO.getNumero());
             }
             if (habitacionDTO.getTipo() != null) {
-                habitacion.setTipo(habitacionDTO.getTipo());
+                habitacionExistente.setTipo(habitacionDTO.getTipo());
             }
             if (habitacionDTO.getPrecio() != null) {
-                habitacion.setPrecio(habitacionDTO.getPrecio());
+                habitacionExistente.setPrecio(habitacionDTO.getPrecio());
             }
             if (habitacionDTO.getDisponibilidad() != null) {
-                habitacion.setDisponibilidad(habitacionDTO.getDisponibilidad());
+                habitacionExistente.setDisponibilidad(habitacionDTO.getDisponibilidad());
             }
 
-            Habitacion updatedHabitacion = habitacionRepository.save(habitacion);
-            return Optional.of(modelMapper.map(updatedHabitacion, HabitacionDTO.class));
-        }
+            Habitacion habitacionGuardada = habitacionRepository.save(habitacionExistente);
+            return modelMapper.map(habitacionGuardada, HabitacionDTO.class);
 
-        return Optional.empty();
     }
 
 
@@ -115,7 +114,7 @@ public class HabitacionService {
 
     /* 8. Restaurar una habitación eliminada */
     public Optional<HabitacionDTO> restaurarHabitacion(Long id) {
-        Optional<Habitacion> habitacionEliminada = habitacionRepository.findByIdAndDeletedFalse(id);
+        Optional<Habitacion> habitacionEliminada = habitacionRepository.findById(id);
 
         if (habitacionEliminada.isPresent()) {
             Habitacion habitacion = habitacionEliminada.get();

@@ -1,0 +1,1 @@
+2024-09-20 09:18:57 [http-nio-8080-exec-1] INFO  d.g.controller.UsuarioController - //// Usuario obtenido con ID 5: UsuarioDTO(id=5, nombre=Bob Williams, email=bob.williams4@example.com, password=hashed_password_8, rol=RolDTO(id=2, nombre=Guest, descripcion=Standard guest role)) ////

@@ -1,4 +1,4 @@
-package distri.gestion_usuarios.config;
+package distri.gestion_habitaciones.config;
 
 import distri.beans.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.Optional;
+
 
 /*
  EStoy definiendo las claves del cache de manera programática para
@@ -51,7 +51,7 @@ public class RedisConfig {
 
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-        //Al final decante por usar  segundos, mas facil.
+        //USAMOS SEGUNDOS.
         int ttlTotalSegundos = ttlSegundos + (ttlMinutes * 60) + (ttlHoras * 3600);
 
         RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
@@ -70,23 +70,21 @@ public class RedisConfig {
 
     /*CACHE MANAGER:
     generacion de clave por codigo.
-    Sera su id.
-    Le doy un nombre a la FUERZA porque no funcionaba
     */
 
     @Bean(name = "keyGenerator")
     public KeyGenerator keyGenerator() {
         return (target, method, params) -> {
-            // Si el primer parámetro es un UsuarioDTO y tiene un ID, usamos ese ID como clave
+            // Nombre de clase +  ID como clave
             if (params.length > 0 && params[0] instanceof UsuarioDTO) {
                 UsuarioDTO usuario = (UsuarioDTO) params[0];
                 return target.getClass().getSimpleName() + "_" + usuario.getId();
             }
-            // Si el parámetro es un ID (Long), usamos directamente ese ID como clave
+            // Nombre de clase +  ID como clave
             if (params.length > 0 && params[0] instanceof Long) {
                 return target.getClass().getSimpleName() + "_" + params[0];
             }
-            // todo falla? hacemos clave genérica basada en los parámetros
+            // Clave genérica basada en los parámetros
             return Arrays.toString(params);
         };
     }

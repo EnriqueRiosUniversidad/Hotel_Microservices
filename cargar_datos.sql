@@ -77,9 +77,16 @@ INSERT INTO Usuario (nombre, email, password, rol_id) VALUES
 
 -- Insert test rooms
 INSERT INTO Habitacion (id, numero, tipo, disponibilidad, precio) VALUES
-(101,101, 'Single', true, 100.00),
-(102,102, 'Double', true, 150.00),
-(103,103, 'Suite', false, 300.00); -- Suite is not available
+(101, 101, 'Single', true, 100.00),
+(102, 102, 'Double', true, 150.00),
+(103, 103, 'Suite', false, 300.00), -- Suite is not available
+(104, 104, 'Single', true, 120.00),
+(105, 105, 'Double', false, 180.00), -- Double room is not available
+(106, 106, 'Suite', true, 350.00),
+(107, 107, 'Single', true, 110.00),
+(108, 108, 'Double', true, 170.00),
+(109, 109, 'Suite', false, 400.00), -- Suite is not available
+(110, 110, 'Single', true, 130.00);
 
 
 -- Insert reservation made by user (Jane Smith)

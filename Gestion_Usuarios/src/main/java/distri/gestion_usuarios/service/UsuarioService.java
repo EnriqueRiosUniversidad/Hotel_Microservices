@@ -34,7 +34,7 @@ public class UsuarioService {
         @CacheEvict: Para eliminar un objeto del cache.
         @CachePut: Actualiza el valor en el cache.
     */
-    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
+        @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioDOMAIN = usuarioRepository.findByEmail(usuarioDTO.getEmail());
         if (usuarioDOMAIN.isPresent()) {

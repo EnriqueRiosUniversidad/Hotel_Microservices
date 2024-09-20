@@ -5,6 +5,9 @@ import distri.beans.dto.HabitacionDTO;
 import distri.gestion_habitaciones.repository.HabitacionRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,7 @@ public class HabitacionService {
 
 
     /* 1. Crear una nueva habitación */
+    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public HabitacionDTO crearHabitacion(HabitacionDTO habitacionDTO) {
 
         Habitacion habitacion = modelMapper.map(habitacionDTO, Habitacion.class);
@@ -43,6 +47,7 @@ public class HabitacionService {
     }
 
     /* 3 Obtener habitación por ID o Número */
+    @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
     public Optional<HabitacionDTO> obtenerHabitacionPorIdONumero(Long id, Long numero) {
         if (id != null) {
             // Buscar por ID si no es nulo
@@ -70,6 +75,7 @@ public class HabitacionService {
     }
 
     // Devolver la habitación actualizada como DTO si no encuentra retornar vacío
+    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public HabitacionDTO actualizarHabitacion(Long id, HabitacionDTO habitacionDTO) {
 
 
@@ -99,6 +105,7 @@ public class HabitacionService {
 
 
     /* 7. Eliminar una habitación (eliminación suave) */
+    @CacheEvict(value = "usuarios", keyGenerator = "keyGenerator")
     public Optional<HabitacionDTO> eliminarHabitacion(Long id) {
         Optional<Habitacion> habitacionExistente = habitacionRepository.findByIdAndDeletedFalse(id);
 
@@ -113,6 +120,7 @@ public class HabitacionService {
     }
 
     /* 8. Restaurar una habitación eliminada */
+    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public Optional<HabitacionDTO> restaurarHabitacion(Long id) {
         Optional<Habitacion> habitacionEliminada = habitacionRepository.findById(id);
 

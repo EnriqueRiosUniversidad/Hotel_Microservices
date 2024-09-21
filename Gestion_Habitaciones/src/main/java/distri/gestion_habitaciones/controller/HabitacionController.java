@@ -2,6 +2,7 @@ package distri.gestion_habitaciones.controller;
 
 import distri.beans.dto.HabitacionDTO;
 import distri.gestion_habitaciones.service.HabitacionService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/habitaciones")
+@Slf4j
 public class HabitacionController {
 
     @Autowired
@@ -22,64 +24,113 @@ public class HabitacionController {
     /* 1. Crear una nueva habitación */
     @PostMapping
     public ResponseEntity<HabitacionDTO> crearHabitacion(@RequestBody HabitacionDTO habitacionDTO) {
-        HabitacionDTO nuevaHabitacion = habitacionService.crearHabitacion(habitacionDTO);
-        return new ResponseEntity<>(nuevaHabitacion, HttpStatus.CREATED);
+        try {
+            log.info("Creando nueva habitacion: {}", habitacionDTO);
+            HabitacionDTO nuevaHabitacion = habitacionService.crearHabitacion(habitacionDTO);
+            log.info("Habitacion creada exitosamente: {}", nuevaHabitacion);
+            return new ResponseEntity<>(nuevaHabitacion, HttpStatus.CREATED);
+        } catch (Exception e) {
+            log.error("Error al crear habitacion: {}", e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /* 2. Obtener habitaciones por disponibilidad (no eliminadas) */
     @GetMapping("/disponibles")
     public ResponseEntity<Page<HabitacionDTO>> obtenerHabitacionesPorDisponibilidad(
             @RequestParam Boolean disponibilidad, Pageable pageable) {
-        Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorDisponibilidad(disponibilidad, pageable);
-        return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        try {
+            log.info("Obteniendo habitaciones con disponibilidad: {}", disponibilidad);
+            Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorDisponibilidad(disponibilidad, pageable);
+            return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Error al obtener habitaciones por disponibilidad: {}", e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /* 3. Obtener habitación por ID */
     @GetMapping
     public ResponseEntity<HabitacionDTO> obtenerHabitacionPorId(@RequestParam Long id) {
-        Optional<HabitacionDTO> habitacion = habitacionService.obtenerHabitacionPorId(id);
-        return habitacion.map(ResponseEntity::ok)
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        try {
+            log.info("Obteniendo habitacion con ID: {}", id);
+            Optional<HabitacionDTO> habitacion = habitacionService.obtenerHabitacionPorId(id);
+            return habitacion.map(ResponseEntity::ok)
+                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        } catch (Exception e) {
+            log.error("Error al obtener habitacion con ID {}: {}", id, e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
 
     /* 4. Obtener habitaciones por rango de precios */
     @GetMapping("/precio")
     public ResponseEntity<Page<HabitacionDTO>> obtenerHabitacionesPorRangoDePrecios(
             @RequestParam BigDecimal precioMin, @RequestParam BigDecimal precioMax, Pageable pageable) {
-        Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorRangoDePrecios(precioMin, precioMax, pageable);
-        return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        try {
+            log.info("Obteniendo habitaciones entre precios {} y {}", precioMin, precioMax);
+            Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorRangoDePrecios(precioMin, precioMax, pageable);
+            return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Error al obtener habitaciones por rango de precios: {}", e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /* 5. Obtener habitaciones por tipo */
     @GetMapping("/tipo")
     public ResponseEntity<Page<HabitacionDTO>> obtenerHabitacionesPorTipo(
             @RequestParam String tipo, Pageable pageable) {
-        Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorTipo(tipo, pageable);
-        return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        try {
+            log.info("Obteniendo habitaciones por tipo: {}", tipo);
+            Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorTipo(tipo, pageable);
+            return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Error al obtener habitaciones por tipo: {}", e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /* 6. Actualizar una habitación */
     @PatchMapping("/{id}")
     public ResponseEntity<HabitacionDTO> actualizarHabitacion(
             @PathVariable Long id, @RequestBody HabitacionDTO habitacionDTO) {
-        HabitacionDTO habitacionActualizada = habitacionService.actualizarHabitacion(id, habitacionDTO);
-        return ResponseEntity.ok(habitacionActualizada);
+        try {
+            log.info("Actualizando habitacion con ID: {}", id);
+            HabitacionDTO habitacionActualizada = habitacionService.actualizarHabitacion(id, habitacionDTO);
+            log.info("Habitacion actualizada exitosamente: {}", habitacionActualizada);
+            return ResponseEntity.ok(habitacionActualizada);
+        } catch (Exception e) {
+            log.error("Error al actualizar habitacion con ID {}: {}", id, e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /* 7. Eliminar una habitación (eliminación suave) */
     @DeleteMapping("/{id}")
     public ResponseEntity<HabitacionDTO> eliminarHabitacion(@PathVariable Long id) {
-        Optional<HabitacionDTO> habitacionEliminada = habitacionService.eliminarHabitacion(id);
-        return habitacionEliminada.map(ResponseEntity::ok)
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        try {
+            log.info("Eliminando habitacion con ID: {}", id);
+            Optional<HabitacionDTO> habitacionEliminada = habitacionService.eliminarHabitacion(id);
+            return habitacionEliminada.map(ResponseEntity::ok)
+                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        } catch (Exception e) {
+            log.error("Error al eliminar habitacion con ID {}: {}", id, e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /* 8. Restaurar una habitación eliminada */
     @PutMapping("/restaurar/{id}")
     public ResponseEntity<HabitacionDTO> restaurarHabitacion(@PathVariable Long id) {
-        Optional<HabitacionDTO> habitacionRestaurada = habitacionService.restaurarHabitacion(id);
-        return habitacionRestaurada.map(ResponseEntity::ok)
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        try {
+            log.info("Restaurando habitacion con ID: {}", id);
+            Optional<HabitacionDTO> habitacionRestaurada = habitacionService.restaurarHabitacion(id);
+            return habitacionRestaurada.map(ResponseEntity::ok)
+                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        } catch (Exception e) {
+            log.error("Error al restaurar habitacion con ID {}: {}", id, e.getMessage(), e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

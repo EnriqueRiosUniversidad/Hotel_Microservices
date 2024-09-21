@@ -32,9 +32,6 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, Long> {
     // NO Eliminada: ID
     Optional<Habitacion> findByIdAndDeletedFalse(Long id);
 
-    // NO Eliminadas: y Numero
-    Optional<Habitacion> findFirstByNumeroAndDeletedFalse(Long numero);
-
 
 
 

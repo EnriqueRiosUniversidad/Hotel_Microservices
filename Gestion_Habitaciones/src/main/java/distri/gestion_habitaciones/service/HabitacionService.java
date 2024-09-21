@@ -46,21 +46,18 @@ public class HabitacionService {
         return habitacionesPage.map(habitacion -> modelMapper.map(habitacion, HabitacionDTO.class));
     }
 
-    /* 3 Obtener habitación por ID o Número */
-    @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
-    public Optional<HabitacionDTO> obtenerHabitacionPorIdONumero(Long id, Long numero) {
+    //@Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
+    @Cacheable(value = "usuarios", key = "#id", unless = "#result == null")
+    public Optional<HabitacionDTO> obtenerHabitacionPorId(Long id) {
         if (id != null) {
-            // Buscar por ID si no es nulo
+            // Search by ID
             Optional<Habitacion> habitacionOptional = habitacionRepository.findByIdAndDeletedFalse(id);
             return habitacionOptional.map(habitacion -> modelMapper.map(habitacion, HabitacionDTO.class));
-        } else if (numero != null) {
-            // Buscar por número si ID es nulo
-            Optional<Habitacion> habitacionOptional = habitacionRepository.findFirstByNumeroAndDeletedFalse(numero);
-            return habitacionOptional.map(habitacion -> modelMapper.map(habitacion, HabitacionDTO.class));
         }
-        // Si ambos son nulos, retornar vacío
+        // Return empty if ID is null
         return Optional.empty();
     }
+
 
     /* 4 Obtener habitaciones por rango de precios (no eliminadas) */
     public Page<HabitacionDTO> obtenerHabitacionesPorRangoDePrecios(BigDecimal precioMin, BigDecimal precioMax, Pageable pageable) {

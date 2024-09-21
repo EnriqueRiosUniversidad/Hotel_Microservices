@@ -34,15 +34,14 @@ public class HabitacionController {
         return new ResponseEntity<>(habitaciones, HttpStatus.OK);
     }
 
-    /* 3. Obtener habitación por ID o Número */
+    /* 3. Obtener habitación por ID */
     @GetMapping
-    public ResponseEntity<HabitacionDTO> obtenerHabitacionPorIdONumero(
-            @RequestParam(required = false) Long id,
-            @RequestParam(required = false) Long numero) {
-        Optional<HabitacionDTO> habitacion = habitacionService.obtenerHabitacionPorIdONumero(id, numero);
+    public ResponseEntity<HabitacionDTO> obtenerHabitacionPorId(@RequestParam Long id) {
+        Optional<HabitacionDTO> habitacion = habitacionService.obtenerHabitacionPorId(id);
         return habitacion.map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
 
     /* 4. Obtener habitaciones por rango de precios */
     @GetMapping("/precio")

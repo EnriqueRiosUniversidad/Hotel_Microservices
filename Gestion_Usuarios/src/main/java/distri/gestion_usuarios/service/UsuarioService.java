@@ -9,12 +9,15 @@ import distri.gestion_usuarios.repository.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -29,13 +32,20 @@ public class UsuarioService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Value("${lanzar.excepcion}")
+    private Boolean lanzar_exepcion;
+
     /*
         @Cacheable: Se usa para almacenar el resultado de métodos en el cache.
         @CacheEvict: Para eliminar un objeto del cache.
         @CachePut: Actualiza el valor en el cache.
     */
-        @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
-    public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO) {
+
+    @Transactional(propagation = Propagation.REQUIRED
+            , readOnly = false
+            , rollbackFor = Exception.class)
+    @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
+    public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO) throws Exception {
         Optional<Usuario> usuarioDOMAIN = usuarioRepository.findByEmail(usuarioDTO.getEmail());
         if (usuarioDOMAIN.isPresent()) {
             throw new RuntimeException("Este email ya ha sido registrado, por favor introduzca otro");
@@ -51,6 +61,11 @@ public class UsuarioService {
             usuario.setDeleted(false);
         }
 
+        /*HACEMOS LA PRUEBA*/
+        if (lanzar_exepcion) {
+            throw new Exception("Error al crear usuario");
+        }
+
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
         log.info("//// Usuario guardado exitosamente: {} ////", usuarioGuardado);
         return modelMapper.map(usuarioGuardado, UsuarioDTO.class);
@@ -61,7 +76,7 @@ public class UsuarioService {
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
     //@Cacheable(value = "usuario", key = "#id")
     public UsuarioDTO obtenerUsuarioPorId(Long id) {

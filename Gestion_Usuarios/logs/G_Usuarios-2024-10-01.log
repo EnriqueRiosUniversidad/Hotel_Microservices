@@ -1,0 +1,11 @@
+2024-10-01 13:28:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-01 13:28:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-01 13:28:59 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1005344356<open>)] for JPA transaction
+2024-10-01 13:28:59 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-01 13:28:59 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@510a8799]
+2024-10-01 13:28:59 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]
+2024-10-01 13:28:59 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByIdAndDeletedFalse]: This method is not transactional.
+2024-10-01 13:28:59 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]
+2024-10-01 13:28:59 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-01 13:28:59 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1005344356<open>)]
+2024-10-01 13:29:00 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction

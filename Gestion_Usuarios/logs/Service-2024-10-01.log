@@ -1,8 +1,0 @@
-2024-10-01 12:14:02 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 12:16:02 [http-nio-8080-exec-3] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 12:18:31 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 12:19:28 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 12:23:29 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 13:24:26 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 13:26:33 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////
-2024-10-01 13:28:59 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 5 En la base de datos. ////

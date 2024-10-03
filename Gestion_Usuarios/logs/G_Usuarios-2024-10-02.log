@@ -1,0 +1,673 @@
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:15:56 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:16:25 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:16:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(168275701<open>)] for JPA transaction
+2024-10-02 16:16:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:16:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4ded5fd1]
+2024-10-02 16:16:26 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:16:26 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:16:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:16:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(168275701<open>)]
+2024-10-02 16:16:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:17:22 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(754411266<open>)] for JPA transaction
+2024-10-02 16:17:22 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:17:22 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4fc48506]
+2024-10-02 16:17:22 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:17:22 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:17:23 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:17:23 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:17:23 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(754411266<open>)]
+2024-10-02 16:17:23 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:20:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:20:54 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1074066767<open>)] for JPA transaction
+2024-10-02 16:20:54 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:20:54 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7783a9bb]
+2024-10-02 16:20:54 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:20:54 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:20:54 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:20:54 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:20:54 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1074066767<open>)]
+2024-10-02 16:20:55 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:21:27 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:21:31 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1074066767<open>)] for JPA transaction
+2024-10-02 16:21:31 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:21:31 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7783a9bb]
+2024-10-02 16:21:31 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:21:31 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:21:32 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:21:32 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:21:32 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1074066767<open>)]
+2024-10-02 16:21:32 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:21:43 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(703096783<open>)] for JPA transaction
+2024-10-02 16:21:43 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:21:43 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@272f9c82]
+2024-10-02 16:21:43 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:21:43 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:21:44 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:21:44 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:21:44 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(703096783<open>)]
+2024-10-02 16:21:44 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:22:14 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1937539172<open>)] for JPA transaction
+2024-10-02 16:22:14 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:22:14 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7dbb707b]
+2024-10-02 16:22:14 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED]
+2024-10-02 16:22:14 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:22:15 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1937539172<open>)] for JPA transaction
+2024-10-02 16:22:15 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Participating in existing transaction
+2024-10-02 16:22:15 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:22:15 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:22:15 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED]
+2024-10-02 16:22:15 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:22:15 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1937539172<open>)]
+2024-10-02 16:22:15 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:26:12 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:26:25 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(497877560<open>)] for JPA transaction
+2024-10-02 16:26:25 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:26:25 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1e7b34a3]
+2024-10-02 16:26:25 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED]
+2024-10-02 16:26:25 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:26:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(497877560<open>)] for JPA transaction
+2024-10-02 16:26:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Participating in existing transaction
+2024-10-02 16:26:26 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:26:26 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:26:26 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED]
+2024-10-02 16:26:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:26:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(497877560<open>)]
+2024-10-02 16:26:26 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:30 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:50 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:51 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:55 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(377020625<open>)] for JPA transaction
+2024-10-02 16:29:55 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:55 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2ca938c3]
+2024-10-02 16:29:55 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:29:55 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:29:56 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:29:56 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:29:56 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(377020625<open>)]
+2024-10-02 16:29:56 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:29:58 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(362570703<open>)] for JPA transaction
+2024-10-02 16:29:58 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:29:58 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1b5b9f0c]
+2024-10-02 16:29:58 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:29:58 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:29:58 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:29:58 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:29:58 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(362570703<open>)]
+2024-10-02 16:29:58 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:30:29 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1860772787<open>)] for JPA transaction
+2024-10-02 16:30:29 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:30:29 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@602ec01e]
+2024-10-02 16:30:29 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:30:29 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:30:30 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:30:30 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:30:30 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1860772787<open>)]
+2024-10-02 16:30:30 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:32:50 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:32:50 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:28 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:34 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(377020625<open>)] for JPA transaction
+2024-10-02 16:42:34 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:42:34 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2ca938c3]
+2024-10-02 16:42:34 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:42:34 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:42:34 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:42:34 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:42:34 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(377020625<open>)]
+2024-10-02 16:42:34 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:43:00 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(964735260<open>)] for JPA transaction
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@255e902d]
+2024-10-02 16:43:00 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:43:00 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(964735260<open>)]
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction rollback after commit exception
+org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : distri.beans.domain.Usuario.deleted
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:307)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:566)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:795)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:663)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:413)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy4/jdk.proxy4.$Proxy138.save(Unknown Source)
+	at distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_REQUIRED(UsuarioTransactionsService.java:60)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at distri.gestion_usuarios.transacciones.UsuarioTransactionsService$$SpringCGLIB$$0.cambiarMail_REQUIRED(<generated>)
+	at distri.gestion_usuarios.transacciones.transaccionController.cambiarEmailRequired(transaccionController.java:37)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value : distri.beans.domain.Usuario.deleted
+	at org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:109)
+	at org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:54)
+	at org.hibernate.event.internal.DefaultFlushEntityEventListener.scheduleUpdate(DefaultFlushEntityEventListener.java:261)
+	at org.hibernate.event.internal.DefaultFlushEntityEventListener.onFlushEntity(DefaultFlushEntityEventListener.java:150)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.flushEntities(AbstractFlushingEventListener.java:234)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.flushEverythingToExecutions(AbstractFlushingEventListener.java:85)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.flushEverythingToExecutions(AbstractFlushingEventListener.java:79)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:40)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1425)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:487)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2324)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1981)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:562)
+	... 69 common frames omitted
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Rolling back JPA transaction on EntityManager [SessionImpl(964735260<open>)]
+2024-10-02 16:43:00 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:46:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:46:38 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:46:38 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2123302920<open>)] for JPA transaction
+2024-10-02 16:46:38 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:46:38 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@33365711]
+2024-10-02 16:46:38 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:46:38 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:46:38 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:46:38 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(2123302920<open>)]
+2024-10-02 16:46:38 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:46:53 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:46:53 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1594065754<open>)] for JPA transaction
+2024-10-02 16:46:53 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:46:53 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4f6c9dbf]
+2024-10-02 16:46:53 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:46:53 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:46:53 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:46:53 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1594065754<open>)]
+2024-10-02 16:46:53 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:47:05 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1671382306<open>)] for JPA transaction
+2024-10-02 16:47:05 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:47:05 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@59cf6b28]
+2024-10-02 16:47:05 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:47:05 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:47:05 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:47:05 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:47:05 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1671382306<open>)]
+2024-10-02 16:47:06 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:50:58 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:52:41 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1321515583<open>)] for JPA transaction
+2024-10-02 16:52:41 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail]
+2024-10-02 16:52:41 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:52:42 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail]
+2024-10-02 16:52:51 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(192812997<open>)] for JPA transaction
+2024-10-02 16:52:51 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:52:51 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3fd626ff]
+2024-10-02 16:52:51 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:52:51 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:52:52 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail]
+2024-10-02 16:52:52 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:52:52 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(192812997<open>)]
+2024-10-02 16:52:52 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:53:24 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:53:24 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(230451691<open>)] for JPA transaction
+2024-10-02 16:53:24 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:53:24 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@194572af]
+2024-10-02 16:53:24 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:53:24 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:53:24 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:53:24 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(230451691<open>)]
+2024-10-02 16:53:24 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:55:34 [http-nio-8080-exec-7] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1540543535<open>)] for JPA transaction
+2024-10-02 16:55:34 [http-nio-8080-exec-7] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:55:34 [http-nio-8080-exec-7] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:55:34 [http-nio-8080-exec-7] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:55:55 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1524847521<open>)] for JPA transaction
+2024-10-02 16:55:55 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:55:55 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:55:55 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:56:03 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(69017496<open>)] for JPA transaction
+2024-10-02 16:56:03 [http-nio-8080-exec-9] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:56:03 [http-nio-8080-exec-9] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:56:04 [http-nio-8080-exec-9] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:56:58 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(706555562<open>)] for JPA transaction
+2024-10-02 16:56:58 [http-nio-8080-exec-10] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:56:58 [http-nio-8080-exec-10] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:56:59 [http-nio-8080-exec-10] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail]
+2024-10-02 16:57:14 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:57:15 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1078450689<open>)] for JPA transaction
+2024-10-02 16:57:15 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:57:15 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2b582f5b]
+2024-10-02 16:57:15 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:57:15 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:57:15 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:57:15 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1078450689<open>)]
+2024-10-02 16:57:15 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:57:25 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:57:26 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(957021563<open>)] for JPA transaction
+2024-10-02 16:57:26 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:57:26 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@20f1abe2]
+2024-10-02 16:57:26 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:57:26 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:57:26 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:57:26 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(957021563<open>)]
+2024-10-02 16:57:26 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:57:35 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:57:35 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1185115515<open>)] for JPA transaction
+2024-10-02 16:57:35 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:57:35 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@611d2fcb]
+2024-10-02 16:57:35 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:57:35 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:57:35 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:57:35 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1185115515<open>)]
+2024-10-02 16:57:35 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:58:35 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(282115134<open>)] for JPA transaction
+2024-10-02 16:58:35 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail]: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 16:58:35 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1e175054]
+2024-10-02 16:58:35 [http-nio-8080-exec-4] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail]
+2024-10-02 16:58:35 [http-nio-8080-exec-4] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:58:36 [http-nio-8080-exec-4] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail]
+2024-10-02 16:58:36 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:58:36 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(282115134<open>)]
+2024-10-02 16:58:36 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 16:58:55 [http-nio-8080-exec-5] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 16:58:56 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(331702863<open>)] for JPA transaction
+2024-10-02 16:58:56 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 16:58:56 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@6edafaf]
+2024-10-02 16:58:56 [http-nio-8080-exec-5] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:58:56 [http-nio-8080-exec-5] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 16:58:56 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 16:58:56 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(331702863<open>)]
+2024-10-02 16:58:56 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:04:59 [http-nio-8080-exec-7] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1883856103<open>)] for JPA transaction
+2024-10-02 17:04:59 [http-nio-8080-exec-7] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail]
+2024-10-02 17:04:59 [http-nio-8080-exec-7] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:04:59 [http-nio-8080-exec-7] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail]
+2024-10-02 17:05:29 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:05:30 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2045471891<open>)] for JPA transaction
+2024-10-02 17:05:30 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:05:30 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@60623646]
+2024-10-02 17:05:30 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:05:30 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:05:30 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:05:30 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(2045471891<open>)]
+2024-10-02 17:05:30 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:05:37 [http-nio-8080-exec-9] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:05:38 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1442436878<open>)] for JPA transaction
+2024-10-02 17:05:38 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:05:38 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@59d77d66]
+2024-10-02 17:05:38 [http-nio-8080-exec-9] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:05:38 [http-nio-8080-exec-9] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:05:38 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:05:38 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1442436878<open>)]
+2024-10-02 17:05:38 [http-nio-8080-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:06:28 [http-nio-8080-exec-10] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:06:28 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(454858107<open>)] for JPA transaction
+2024-10-02 17:06:28 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:06:28 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@46077d38]
+2024-10-02 17:06:28 [http-nio-8080-exec-10] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:06:28 [http-nio-8080-exec-10] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:06:28 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:06:28 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(454858107<open>)]
+2024-10-02 17:06:28 [http-nio-8080-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:08:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:08:19 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:08:20 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2129924752<open>)] for JPA transaction
+2024-10-02 17:08:20 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:08:20 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@438b4e37]
+2024-10-02 17:08:20 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:08:20 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:08:20 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:08:20 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(2129924752<open>)]
+2024-10-02 17:08:20 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:12:22 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:12:47 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:12:47 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1261091335<open>)] for JPA transaction
+2024-10-02 17:12:47 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:12:47 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4a79a1f9]
+2024-10-02 17:12:47 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:12:47 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:12:47 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:12:47 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1261091335<open>)]
+2024-10-02 17:12:47 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:13:48 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:15 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:15:20 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:15:21 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1118118546<open>)] for JPA transaction
+2024-10-02 17:15:21 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:15:21 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3c0e4844]
+2024-10-02 17:15:21 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:15:21 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:15:21 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:15:21 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1118118546<open>)]
+2024-10-02 17:15:21 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:15:43 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(387525740<open>)] for JPA transaction
+2024-10-02 17:15:43 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail]
+2024-10-02 17:15:43 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:15:43 [http-nio-8080-exec-2] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail]
+2024-10-02 17:15:52 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1013695108<open>)] for JPA transaction
+2024-10-02 17:15:52 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail]
+2024-10-02 17:15:52 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:15:53 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail]
+2024-10-02 17:16:27 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1442363434<open>)] for JPA transaction
+2024-10-02 17:16:59 [http-nio-8080-exec-5] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:16:59 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(276607211<open>)] for JPA transaction
+2024-10-02 17:16:59 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:16:59 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@29f5e227]
+2024-10-02 17:16:59 [http-nio-8080-exec-5] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:16:59 [http-nio-8080-exec-5] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:16:59 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:16:59 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(276607211<open>)]
+2024-10-02 17:16:59 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:17:16 [http-nio-8080-exec-6] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:17:17 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(607749241<open>)] for JPA transaction
+2024-10-02 17:17:17 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:17:17 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@6666d04]
+2024-10-02 17:17:17 [http-nio-8080-exec-6] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:17:17 [http-nio-8080-exec-6] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:17:17 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:17:17 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(607749241<open>)]
+2024-10-02 17:17:17 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:18:16 [http-nio-8080-exec-7] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(92727599<open>)] for JPA transaction
+2024-10-02 17:18:59 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:18:59 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1421375266<open>)] for JPA transaction
+2024-10-02 17:18:59 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:18:59 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@6f73ede6]
+2024-10-02 17:18:59 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:18:59 [http-nio-8080-exec-8] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:18:59 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:18:59 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1421375266<open>)]
+2024-10-02 17:18:59 [http-nio-8080-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:22:46 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:22:51 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:23:25 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:23:30 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:24:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:24:51 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1428328497<open>)] for JPA transaction
+2024-10-02 17:24:51 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:24:51 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3cf99c82]
+2024-10-02 17:24:51 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:24:51 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:24:51 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:24:51 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:24:51 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1428328497<open>)]
+2024-10-02 17:24:52 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:25:42 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:25:49 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2112376623<open>)] for JPA transaction
+2024-10-02 17:25:49 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:25:49 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@5772a863]
+2024-10-02 17:25:49 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:25:49 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:25:49 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:25:49 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:25:49 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(2112376623<open>)]
+2024-10-02 17:25:49 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:25:56 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1860772787<open>)] for JPA transaction
+2024-10-02 17:26:03 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(958070875<open>)] for JPA transaction
+2024-10-02 17:26:03 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:26:03 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@37dcf908]
+2024-10-02 17:26:03 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:26:03 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:26:03 [http-nio-8080-exec-3] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:26:03 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:26:03 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(958070875<open>)]
+2024-10-02 17:26:03 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:26:29 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:26:35 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:06 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:29:13 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:29:14 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1174995120<open>)] for JPA transaction
+2024-10-02 17:29:14 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:29:14 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@40e81ffa]
+2024-10-02 17:29:14 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:29:14 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:29:14 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:29:14 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1174995120<open>)]
+2024-10-02 17:29:14 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:29:57 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT
+2024-10-02 17:30:01 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1177306961<open>)] for JPA transaction
+2024-10-02 17:30:01 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:30:01 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:30:01 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1177306961<open>)] for JPA transaction
+2024-10-02 17:30:01 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:30:01 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Opened new EntityManager [SessionImpl(1855829922<open>)] for JPA transaction
+2024-10-02 17:30:01 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7fb9b09e]
+2024-10-02 17:30:01 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:30:02 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:30:02 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:30:02 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1855829922<open>)]
+2024-10-02 17:30:02 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Closing JPA EntityManager [SessionImpl(1855829922<open>)] after transaction
+2024-10-02 17:30:02 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Resuming suspended transaction after completion of inner transaction
+2024-10-02 17:30:02 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:00 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:33:05 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:33:06 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(357619857<open>)] for JPA transaction
+2024-10-02 17:33:06 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:33:06 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save] after exception: jakarta.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'merge' call
+2024-10-02 17:33:06 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Should roll back transaction but cannot - no transaction available
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.crearUsuario' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly,-java.lang.Exception
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requiredPorEmail' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.supportsPorEmail' with attribute: PROPAGATION_SUPPORTS,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.not_supportsPorEmail' with attribute: PROPAGATION_NOT_SUPPORTED,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.requires_newPorEmail' with attribute: PROPAGATION_REQUIRES_NEW,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.neverPorEmail' with attribute: PROPAGATION_NEVER,ISOLATION_DEFAULT,readOnly
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.mandatoryPorEmail' with attribute: PROPAGATION_MANDATORY,ISOLATION_DEFAULT
+2024-10-02 17:33:32 [restartedMain] TRACE o.s.t.a.AnnotationTransactionAttributeSource - Adding transactional method 'distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2112376623<open>)] for JPA transaction
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@5772a863]
+2024-10-02 17:34:08 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:34:08 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - No need to create transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findByEmail]: This method is not transactional.
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2112376623<open>)] for JPA transaction
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Participating in existing transaction
+2024-10-02 17:34:08 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:34:08 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2024-10-02 17:34:08 [http-nio-8080-exec-1] TRACE o.s.t.i.TransactionInterceptor - Completing transaction for [distri.gestion_usuarios.transacciones.UsuarioTransactionsService.cambiarMail_MANDATORY]
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-02 17:34:08 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(2112376623<open>)]
+2024-10-02 17:34:09 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction

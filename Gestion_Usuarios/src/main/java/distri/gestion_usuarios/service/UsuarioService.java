@@ -63,6 +63,7 @@ public class UsuarioService {
 
         /*HACEMOS LA PRUEBA*/
         if (lanzar_exepcion) {
+            log.error("-- Error al crear el usuario con los datos: {}", usuarioDTO);
             throw new Exception("Error al crear usuario");
         }
 
@@ -76,12 +77,19 @@ public class UsuarioService {
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Exception.class)
     @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
     //@Cacheable(value = "usuario", key = "#id")
-    public UsuarioDTO obtenerUsuarioPorId(Long id) {
+    public UsuarioDTO obtenerUsuarioPorId(Long id) throws Exception {
         log.info("//// Buscando usuario con ID: {} En la base de datos. ////", id);
         Optional<Usuario> usuario = usuarioRepository.findByIdAndDeletedFalse(id);
+
+        /*HACEMOS LA PRUEBA*/
+        if (lanzar_exepcion) {
+            log.error("-- Error al Buscar el usuario con ID: {}", id);
+            throw new Exception("Error al buscar usuario");
+        }
+
         if (usuario.isPresent()) {
             return modelMapper.map(usuario.get(), UsuarioDTO.class);
         } else {
@@ -107,10 +115,6 @@ public class UsuarioService {
 
         if (usuarioDTO.getEmail() != null) {
             usuarioExistente.setEmail(usuarioDTO.getEmail());
-        }
-
-        if (usuarioDTO.getPassword() != null) {
-            usuarioExistente.setPassword(usuarioDTO.getPassword());
         }
 
         if (usuarioDTO.getRol() != null && usuarioDTO.getRol().getId() != null) {
@@ -150,4 +154,6 @@ public class UsuarioService {
             throw new RuntimeException("Error al intentar eliminar el usuario: " + e.getMessage());
         }
     }
+
+
 }

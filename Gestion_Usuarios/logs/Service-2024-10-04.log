@@ -1,0 +1,3 @@
+2024-10-04 11:53:01 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - Simulando una espera larga para provocar un timeout...
+2024-10-04 11:53:03 [http-nio-8080-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 51 En la base de datos. ////
+2024-10-04 11:54:38 [http-nio-8080-exec-4] INFO  d.g.service.UsuarioService - //// Usuario guardado exitosamente: Usuario(nombre=Lucia, email=Lucia8.com, password=una contrase;a hasheada, rol=Rol(nombre=USER, descripcion=Standard user role with limited access)) ////

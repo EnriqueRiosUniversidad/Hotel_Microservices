@@ -1,8 +1,6 @@
 package distri.gestion_usuarios.transacciones;
 
 import distri.beans.domain.Usuario;
-import distri.beans.dto.UsuarioDTO;
-import distri.gestion_usuarios.service.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,153 +9,155 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usuarios")
-@Slf4j // Anotación de Lombok para logging
-public class transaccionController {
+@Slf4j
+public class TransaccionController {
 
     @Autowired
-    private UsuarioTransactionsService usuarioTransactionsService;
+    private UsuarioDirectTransactionsService directTransactionsService;
 
+    @Autowired
+    private UsuarioIndirectTransactionsService indirectTransactionsService;
 
-
+    // Llamada directa a requiredPorEmail
     @GetMapping("/direct/required")
-    public ResponseEntity<Usuario> getUsuarioByEmailRequired(@RequestBody Usuario request) {
+    public ResponseEntity<Usuario> getUsuarioByEmailRequired(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            Usuario usuario = usuarioTransactionsService.requiredPorEmail(request.getEmail());
+            Usuario usuario = directTransactionsService.requiredPorEmail(request.getEmail());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
-            log.error("Error en llamada directa a requiredPorEmail: ", e);
+            log.error("Error en llamada directa a requiredPorEmail: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    // Llamada indirecta a cambiarMail_REQUIRED (que invoca requiredPorEmail)
+    // Llamada indirecta a cambiarMail_REQUIRED
     @PostMapping("/indirect/required")
     public ResponseEntity<String> cambiarEmailRequired(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            String resultado = usuarioTransactionsService.cambiarMail_REQUIRED(request.getEmail(), request.getEmail_nuevo());
+            String resultado = indirectTransactionsService.cambiarMail_REQUIRED(request.getEmail(), request.getEmail_nuevo());
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
-            log.error("Error en llamada indirecta a cambiarMail_REQUIRED: ", e);
+            log.error("Error en llamada indirecta a cambiarMail_REQUIRED: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falló el cambio de email");
         }
     }
 
-    // Llamada directa a supportsPorEmail (propagación SUPPORTS)
+    // Llamada directa a supportsPorEmail
     @GetMapping("/direct/supports")
     public ResponseEntity<Usuario> getUsuarioByEmailSupports(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            Usuario usuario = usuarioTransactionsService.supportsPorEmail(request.getEmail());
+            Usuario usuario = directTransactionsService.supportsPorEmail(request.getEmail());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
-            log.error("Error en llamada directa a supportsPorEmail: ", e);
+            log.error("Error en llamada directa a supportsPorEmail: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    // Llamada indirecta a cambiarMail_SUPPORTS (que invoca supportsPorEmail)
+    // Llamada indirecta a cambiarMail_SUPPORTS
     @PostMapping("/indirect/supports")
     public ResponseEntity<String> cambiarEmailSupports(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            String resultado = usuarioTransactionsService.cambiarMail_SUPPORTS(request.getEmail(), request.getEmail_nuevo());
+            String resultado = indirectTransactionsService.cambiarMail_SUPPORTS(request.getEmail(), request.getEmail_nuevo());
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
-            log.error("Error en llamada indirecta a cambiarMail_SUPPORTS: ", e);
+            log.error("Error en llamada indirecta a cambiarMail_SUPPORTS: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falló el cambio de email");
         }
     }
 
-    // Llamada directa a not_supportsPorEmail (propagación NOT_SUPPORTED)
+    // Llamada directa a not_supportsPorEmail
     @GetMapping("/direct/not-supported")
     public ResponseEntity<Usuario> getUsuarioByEmailNotSupported(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            Usuario usuario = usuarioTransactionsService.not_supportsPorEmail(request.getEmail());
+            Usuario usuario = directTransactionsService.not_supportsPorEmail(request.getEmail());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
-            log.error("Error en llamada directa a not_supportsPorEmail: ", e);
+            log.error("Error en llamada directa a not_supportsPorEmail: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    // Llamada indirecta a cambiarMail_NOT_SUPPORTED (que invoca not_supportsPorEmail)
+    // Llamada indirecta a cambiarMail_NOT_SUPPORTED
     @PostMapping("/indirect/not-supported")
     public ResponseEntity<String> cambiarEmailNotSupported(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            String resultado = usuarioTransactionsService.cambiarMail_NOT_SUPPORTED(request.getEmail(), request.getEmail_nuevo());
+            String resultado = indirectTransactionsService.cambiarMail_NOT_SUPPORTED(request.getEmail(), request.getEmail_nuevo());
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
-            log.error("Error en llamada indirecta a cambiarMail_NOT_SUPPORTED: ", e);
+            log.error("Error en llamada indirecta a cambiarMail_NOT_SUPPORTED: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falló el cambio de email");
         }
     }
 
-    // Llamada directa a requires_newPorEmail (propagación REQUIRES_NEW)
+    // Llamada directa a requires_newPorEmail
     @GetMapping("/direct/requires-new")
     public ResponseEntity<Usuario> getUsuarioByEmailRequiresNew(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            Usuario usuario = usuarioTransactionsService.requires_newPorEmail(request.getEmail());
+            Usuario usuario = directTransactionsService.requires_newPorEmail(request.getEmail());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
-            log.error("Error en llamada directa a requires_newPorEmail: ", e);
+            log.error("Error en llamada directa a requires_newPorEmail: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    // Llamada indirecta a cambiarMail_REQUIRES_NEW (que invoca requires_newPorEmail)
+    // Llamada indirecta a cambiarMail_REQUIRES_NEW
     @PostMapping("/indirect/requires-new")
     public ResponseEntity<String> cambiarEmailRequiresNew(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            String resultado = usuarioTransactionsService.cambiarMail_REQUIRES_NEW(request.getEmail(), request.getEmail_nuevo());
+            String resultado = indirectTransactionsService.cambiarMail_REQUIRES_NEW(request.getEmail(), request.getEmail_nuevo());
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
-            log.error("Error en llamada indirecta a cambiarMail_REQUIRES_NEW: ", e);
+            log.error("Error en llamada indirecta a cambiarMail_REQUIRES_NEW: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falló el cambio de email");
         }
     }
 
-    // Llamada directa a neverPorEmail (propagación NEVER)
+    // Llamada directa a neverPorEmail
     @GetMapping("/direct/never")
     public ResponseEntity<Usuario> getUsuarioByEmailNever(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            Usuario usuario = usuarioTransactionsService.neverPorEmail(request.getEmail());
+            Usuario usuario = directTransactionsService.neverPorEmail(request.getEmail());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
-            log.error("Error en llamada directa a neverPorEmail: ", e);
+            log.error("Error en llamada directa a neverPorEmail: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    // Llamada indirecta a cambiarMail_NEVER (que invoca neverPorEmail)
+    // Llamada indirecta a cambiarMail_NEVER
     @PostMapping("/indirect/never")
     public ResponseEntity<String> cambiarEmailNever(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            String resultado = usuarioTransactionsService.cambiarMail_NEVER(request.getEmail(), request.getEmail_nuevo());
+            String resultado = indirectTransactionsService.cambiarMail_NEVER(request.getEmail(), request.getEmail_nuevo());
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
-            log.error("Error en llamada indirecta a cambiarMail_NEVER: ", e);
+            log.error("Error en llamada indirecta a cambiarMail_NEVER: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falló el cambio de email");
         }
     }
 
-    // Llamada directa a mandatoryPorEmail (propagación MANDATORY)
+    // Llamada directa a mandatoryPorEmail
     @GetMapping("/direct/mandatory")
     public ResponseEntity<Usuario> getUsuarioByEmailMandatory(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            Usuario usuario = usuarioTransactionsService.mandatoryPorEmail(request.getEmail());
+            Usuario usuario = directTransactionsService.mandatoryPorEmail(request.getEmail());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
-            log.error("Error en llamada directa a mandatoryPorEmail: ", e);
+            log.error("Error en llamada directa a mandatoryPorEmail: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    // Llamada indirecta a cambiarMail_MANDATORY (que invoca mandatoryPorEmail)
+    // Llamada indirecta a cambiarMail_MANDATORY
     @PostMapping("/indirect/mandatory")
     public ResponseEntity<String> cambiarEmailMandatory(@RequestBody EmailUpdateRequestDTO request) {
         try {
-            String resultado = usuarioTransactionsService.cambiarMail_MANDATORY(request.getEmail(), request.getEmail_nuevo());
+            String resultado = indirectTransactionsService.cambiarMail_MANDATORY(request.getEmail(), request.getEmail_nuevo());
             return ResponseEntity.ok(resultado);
         } catch (Exception e) {
-            log.error("Error en llamada indirecta a cambiarMail_MANDATORY: ", e);
+            log.error("Error en llamada indirecta a cambiarMail_MANDATORY: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Falló el cambio de email");
         }
     }

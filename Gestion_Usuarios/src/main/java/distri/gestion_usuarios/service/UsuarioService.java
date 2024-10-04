@@ -4,6 +4,7 @@ import distri.beans.domain.Rol;
 import distri.beans.domain.Usuario;
 import distri.beans.dto.RolDTO;
 import distri.beans.dto.UsuarioDTO;
+import distri.gestion_usuarios.DTOs.CreateUserRequest;
 import distri.gestion_usuarios.repository.RolRepository;
 import distri.gestion_usuarios.repository.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -41,21 +42,22 @@ public class UsuarioService {
         @CachePut: Actualiza el valor en el cache.
     */
 
+    //Recibe un CreateRequest, guarda en BD un USUARIO y devuelve un USUARIODTO
     @Transactional(propagation = Propagation.REQUIRED
             , readOnly = false
             , rollbackFor = Exception.class)
     @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
-    public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO) throws Exception {
-        Optional<Usuario> usuarioDOMAIN = usuarioRepository.findByEmail(usuarioDTO.getEmail());
+    public UsuarioDTO crearUsuario(CreateUserRequest createUserRequestDTO) throws Exception {
+        Optional<Usuario> usuarioDOMAIN = usuarioRepository.findByEmail(createUserRequestDTO.getEmail());
         if (usuarioDOMAIN.isPresent()) {
             throw new RuntimeException("Este email ya ha sido registrado, por favor introduzca otro");
         }
 
-        Rol rol = rolRepository.findById(usuarioDTO.getRol().getId())
+        Rol rol = rolRepository.findById(createUserRequestDTO.getRol().getId())
                 .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
 
-        usuarioDTO.setRol(modelMapper.map(rol, RolDTO.class));
-        Usuario usuario = modelMapper.map(usuarioDTO, Usuario.class);
+        createUserRequestDTO.setRol(modelMapper.map(rol, RolDTO.class));
+        Usuario usuario = modelMapper.map(createUserRequestDTO, Usuario.class);
 
         if (usuario.getDeleted() == null) {
             usuario.setDeleted(false);
@@ -63,7 +65,7 @@ public class UsuarioService {
 
         /*HACEMOS LA PRUEBA*/
         if (lanzar_exepcion) {
-            log.error("-- Error al crear el usuario con los datos: {}", usuarioDTO);
+            log.error("-- Error al crear el usuario con los datos: {}", createUserRequestDTO);
             throw new Exception("Error al crear usuario");
         }
 
@@ -77,12 +79,23 @@ public class UsuarioService {
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Exception.class)
+    @Transactional(timeout = 1,propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
     @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
     //@Cacheable(value = "usuario", key = "#id")
     public UsuarioDTO obtenerUsuarioPorId(Long id) throws Exception {
+        // Simulación de espera para provocar el rollback por timeout
+        try {
+            log.info("Simulando una espera larga para provocar un timeout...");
+            Thread.sleep(2000);  // Espera de 2 segundos (excede el timeout de 1 segundo)
+        } catch (InterruptedException e) {
+            log.error("Error al intentar simular la espera: ", e);
+        }
+
+
         log.info("//// Buscando usuario con ID: {} En la base de datos. ////", id);
         Optional<Usuario> usuario = usuarioRepository.findByIdAndDeletedFalse(id);
+
+
 
         /*HACEMOS LA PRUEBA*/
         if (lanzar_exepcion) {

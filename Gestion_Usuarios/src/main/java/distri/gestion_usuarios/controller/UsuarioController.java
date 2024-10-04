@@ -1,6 +1,7 @@
     package distri.gestion_usuarios.controller;
 
     import distri.beans.dto.UsuarioDTO;
+    import distri.gestion_usuarios.DTOs.CreateUserRequest;
     import distri.gestion_usuarios.service.UsuarioService;
     import lombok.extern.slf4j.Slf4j;
     import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +32,10 @@
 
 
         @PostMapping
-        public ResponseEntity<?> crearUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        public ResponseEntity<?> crearUsuario(@RequestBody CreateUserRequest createUserRequestDTO) {
             try {
-                UsuarioDTO nuevoUsuario = usuarioService.crearUsuario(usuarioDTO);
-                log.info("//// Usuario creado exitosamente: {} ////", usuarioDTO);
+                UsuarioDTO nuevoUsuario = usuarioService.crearUsuario(createUserRequestDTO);
+                log.info("//// Usuario creado exitosamente: {} ////", nuevoUsuario);
                 return ResponseEntity.ok(nuevoUsuario);
             } catch (Exception e) {
                 log.error("==== Error al crear el usuario: {} ====", e.getMessage(), e);

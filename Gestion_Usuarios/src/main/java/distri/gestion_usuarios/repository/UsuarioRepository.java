@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository <Usuario, Long> {
+
+
+    //@Transactional(propagation = Propagation.SUPPORTS)
     Optional<Usuario> findByEmail(String email);
 
 
@@ -21,9 +24,11 @@ public interface UsuarioRepository extends JpaRepository <Usuario, Long> {
     Page<Usuario> findByDeletedFalse(Pageable pageable);
 
     // Get por ID que no esté eliminado
+    //@Transactional(propagation = Propagation.SUPPORTS)
     Optional<Usuario> findByIdAndDeletedFalse(Long id);
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+
+     //@Transactional(propagation = Propagation.SUPPORTS)
     Usuario save(Usuario usuario);
 
     //              BUSQUEDAS

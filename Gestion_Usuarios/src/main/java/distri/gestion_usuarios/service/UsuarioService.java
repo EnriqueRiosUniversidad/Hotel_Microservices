@@ -73,7 +73,8 @@ public class UsuarioService {
         log.info("//// Usuario guardado exitosamente: {} ////", usuarioGuardado);
         return modelMapper.map(usuarioGuardado, UsuarioDTO.class);
     }
-
+    
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Page<UsuarioDTO> obtenerUsuarios(Pageable pageable) {
         return usuarioRepository.findByDeletedFalse(pageable)
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
@@ -111,12 +112,13 @@ public class UsuarioService {
         }
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Page<UsuarioDTO> buscarUsuariosPorNombre(String nombre, Pageable pageable) {
         return usuarioRepository.findByNombreContainingIgnoreCaseAndDeletedFalse(nombre, pageable)
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @CachePut(value = "usuarios", keyGenerator = "keyGenerator")
     public UsuarioDTO actualizarUsuarioPorId(Long id, UsuarioDTO usuarioDTO) {
         Usuario usuarioExistente = usuarioRepository.findById(id)
@@ -141,7 +143,7 @@ public class UsuarioService {
         return modelMapper.map(usuarioGuardado, UsuarioDTO.class);
     }
 
-
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     @CacheEvict(value = "usuarios", keyGenerator = "keyGenerator")
     public String eliminarUsuario(Long id, String email) {
         try {

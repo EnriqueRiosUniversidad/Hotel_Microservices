@@ -34,6 +34,7 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, Long> {
 
 
 
+    Optional<Habitacion> findByNumero(int numeroHabitacion);
 
 }
 

@@ -1,16 +1,17 @@
 <configuration>
-    <!-- Appender para la consola -->
+    <!-- Appender para la consola con colores -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!-- Aplicar color a los niveles de log normales -->
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) %logger{36} - %msg%n
+            </pattern>
         </encoder>
     </appender>
 
     <!-- Appender para general -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- Rotar los archivos diariamente -->
             <fileNamePattern>logs/G_Usuarios-%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
@@ -18,10 +19,8 @@
         </encoder>
     </appender>
 
-
     <!-- Appender para Controllers -->
     <appender name="FILE_Controller" class="ch.qos.logback.core.rolling.RollingFileAppender">
-
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>logs/Controller-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
@@ -33,7 +32,6 @@
 
     <!-- Appender para Services -->
     <appender name="FILE_Service" class="ch.qos.logback.core.rolling.RollingFileAppender">
-
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>logs/Service-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
@@ -43,19 +41,44 @@
         </encoder>
     </appender>
 
+    <!-- Appender específico para transacciones -->
+    <appender name="CONSOLE_TRANSACTIONS" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!-- Formato especial y color magenta para logs de transacciones -->
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %cyan(%-5level) %yellow(%logger{36}) - %boldMagenta(%msg%n)
+            </pattern>
+        </encoder>
+    </appender>
+
     <!-- Definir el nivel de log global para toda la aplicación -->
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
+    <root level="ERROR">
+        <appender-ref ref="CONSOLE" />
+      <appender-ref ref="FILE" />-
     </root>
 
     <!-- Logger específico para UsuarioController -->
-    <logger name="distri.gestion_habitaciones.controller" level="INFO" additivity="false">
-        <appender-ref ref="FILE_Controller"/>
+    <logger name="distri.gestion_usuarios.controller" level="INFO" additivity="false">
+        <appender-ref ref="FILE_Controller" />
     </logger>
 
     <!-- Logger específico para UsuarioService -->
-    <logger name="distri.gestion_habitaciones.service" level="INFO" additivity="false">
-        <appender-ref ref="FILE_Service"/>
+    <logger name="distri.gestion_usuarios.service" level="INFO" additivity="false">
+        <appender-ref ref="FILE_Service" />
     </logger>
+
+    <!-- Logger específico para Transacciones -->
+    <logger name="org.springframework.transaction" level="DEBUG" additivity="false">
+        <!-- Usamos el appender con color magenta especial para transacciones -->
+        <appender-ref ref="CONSOLE_TRANSACTIONS" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- Logger específico para JpaTransactionManager -->
+    <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE_TRANSACTIONS" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+
 </configuration>

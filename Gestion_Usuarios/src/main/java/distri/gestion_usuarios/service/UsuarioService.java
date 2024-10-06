@@ -80,17 +80,18 @@ public class UsuarioService {
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-    @Transactional(timeout = 1,propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
+    @Transactional(timeout = 5,propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
     @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
     //@Cacheable(value = "usuario", key = "#id")
     public UsuarioDTO obtenerUsuarioPorId(Long id) throws Exception {
         // Simulación de espera para provocar el rollback por timeout
-        try {
+      /*
+      try {
             log.info("Simulando una espera larga para provocar un timeout...");
             Thread.sleep(2000);  // Espera de 2 segundos (excede el timeout de 1 segundo)
         } catch (InterruptedException e) {
             log.error("Error al intentar simular la espera: ", e);
-        }
+        }*/
 
 
         log.info("//// Buscando usuario con ID: {} En la base de datos. ////", id);

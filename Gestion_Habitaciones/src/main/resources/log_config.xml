@@ -12,7 +12,7 @@
     <!-- Appender para general -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/G_Usuarios-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/G_Habitaciones-%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -57,13 +57,13 @@
       <appender-ref ref="FILE" />-
     </root>
 
-    <!-- Logger específico para UsuarioController -->
-    <logger name="distri.gestion_usuarios.controller" level="INFO" additivity="false">
+    <!-- Logger específico para HabitacionesController -->
+    <logger name="distri.gestion_habitaciones.controller" level="INFO" additivity="false">
         <appender-ref ref="FILE_Controller" />
     </logger>
 
-    <!-- Logger específico para UsuarioService -->
-    <logger name="distri.gestion_usuarios.service" level="INFO" additivity="false">
+    <!-- Logger específico para HabitacionesService -->
+    <logger name="distri.gestion_habitaciones.service" level="INFO" additivity="false">
         <appender-ref ref="FILE_Service" />
     </logger>
 

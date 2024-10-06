@@ -16,6 +16,21 @@ public class transaccionesController {
     @Autowired
     IndirectTransactionsService indirectTransactionsService;
 
+
+    @GetMapping("/timeout")
+    public ResponseEntity<?> timeOut(@RequestBody dispobilidadUpdateDTO request) {
+        try {
+            Habitacion habitacion = directTransactionsService.byNumero_TIMEOUT(request.getNumero());
+            log.info("Se obtuvo la habitacion Numero {} en REQUIRED", habitacion.getNumero());
+            return ResponseEntity.ok(habitacion);
+        } catch (Exception e) {
+            log.error("Error dentro del controller direct REQUIRED {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+
+
     // Llamada Direct REQUIRED
     @GetMapping("/direct/required")
     public ResponseEntity<?> getByNumero_REQUIRED(@RequestBody dispobilidadUpdateDTO request) {
@@ -69,7 +84,7 @@ public class transaccionesController {
     }
 
     // Llamada Direct NOT_SUPPORTED
-    @GetMapping("/direct/not_supported")
+    @GetMapping("/direct/not-supported")
     public ResponseEntity<?> getByNumero_NOT_SUPPORTED(@RequestBody dispobilidadUpdateDTO request) {
         try {
             Habitacion habitacion = directTransactionsService.byNumero_NOT_SUPPORTED(request.getNumero());
@@ -82,7 +97,7 @@ public class transaccionesController {
     }
 
     // Llamada Indirect NOT_SUPPORTED
-    @PostMapping("/indirect/not_supported")
+    @PostMapping("/indirect/not-supported")
     public ResponseEntity<?> cambiarDisponibilidad_NOT_SUPPORTED(@RequestBody dispobilidadUpdateDTO request) {
         try {
             String response = indirectTransactionsService.cambiarDisponibilidad_NOT_SUPPORTED(request.getNumero(), request.getDisponibilidad());

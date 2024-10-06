@@ -1,0 +1,40 @@
+2024-10-06 20:45:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1906082850<open>)] for JPA transaction
+2024-10-06 20:45:43 [http-nio-8080-exec-1] ERROR d.g.t.transaccionesController - Error dentro del controller direct MANDATORY No existing transaction found for transaction marked with propagation 'mandatory'
+2024-10-06 20:48:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(45434552<open>)] for JPA transaction
+2024-10-06 20:48:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_habitaciones.transacciones.DirectTransactionsService.byNumero_REQUIRED]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-06 20:48:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@5482622a]
+2024-10-06 20:48:43 [http-nio-8080-exec-1] ERROR d.g.t.DirectTransactionsService - -- Error en SUPPORTS numero: 101
+2024-10-06 20:48:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction rollback
+2024-10-06 20:48:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Rolling back JPA transaction on EntityManager [SessionImpl(45434552<open>)]
+2024-10-06 20:48:43 [http-nio-8080-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-06 20:48:43 [http-nio-8080-exec-1] ERROR d.g.t.transaccionesController - Error dentro del controller direct REQUIRED Error en REQUIRED Directo parametro numero: 101
+2024-10-06 20:48:57 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(713539920<open>)] for JPA transaction
+2024-10-06 20:48:57 [http-nio-8080-exec-2] ERROR d.g.t.DirectTransactionsService - -- Error en SUPPORTS numero: 101
+2024-10-06 20:48:57 [http-nio-8080-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Should roll back transaction but cannot - no transaction available
+2024-10-06 20:48:57 [http-nio-8080-exec-2] ERROR d.g.t.transaccionesController - Error dentro del controller indirect SUPPORTS Error en REQUIRED Directo parametro numero: 101
+2024-10-06 20:49:00 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(115344017<open>)] for JPA transaction
+2024-10-06 20:49:00 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_habitaciones.transacciones.DirectTransactionsService.byNumero_REQUIRED]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-06 20:49:00 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@827ec3d]
+2024-10-06 20:49:01 [http-nio-8080-exec-3] ERROR d.g.t.DirectTransactionsService - -- Error en SUPPORTS numero: 101
+2024-10-06 20:49:01 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction rollback
+2024-10-06 20:49:01 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Rolling back JPA transaction on EntityManager [SessionImpl(115344017<open>)]
+2024-10-06 20:49:01 [http-nio-8080-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-06 20:49:01 [http-nio-8080-exec-3] ERROR d.g.t.transaccionesController - Error dentro del controller direct REQUIRED Error en REQUIRED Directo parametro numero: 101
+2024-10-06 20:49:55 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(269433643<open>)] for JPA transaction
+2024-10-06 20:49:55 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_habitaciones.transacciones.DirectTransactionsService.byNumero_REQUIRED]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2024-10-06 20:49:56 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1ec8c75a]
+2024-10-06 20:49:56 [http-nio-8080-exec-4] ERROR d.g.t.DirectTransactionsService - -- Error en SUPPORTS numero: 101
+2024-10-06 20:49:56 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction rollback
+2024-10-06 20:49:56 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Rolling back JPA transaction on EntityManager [SessionImpl(269433643<open>)]
+2024-10-06 20:49:56 [http-nio-8080-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-06 20:49:56 [http-nio-8080-exec-4] ERROR d.g.t.transaccionesController - Error dentro del controller direct REQUIRED Error en REQUIRED Directo parametro numero: 101
+2024-10-06 20:50:11 [http-nio-8080-exec-5] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1273306692<open>)] for JPA transaction
+2024-10-06 20:50:11 [http-nio-8080-exec-5] ERROR d.g.t.transaccionesController - Error dentro del controller direct MANDATORY No existing transaction found for transaction marked with propagation 'mandatory'
+2024-10-06 20:50:18 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1453285374<open>)] for JPA transaction
+2024-10-06 20:50:18 [http-nio-8080-exec-6] ERROR d.g.t.DirectTransactionsService - -- Error en SUPPORTS numero: 101
+2024-10-06 20:50:18 [http-nio-8080-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager - Should roll back transaction but cannot - no transaction available
+2024-10-06 20:50:18 [http-nio-8080-exec-6] ERROR d.g.t.transaccionesController - Error dentro del controller direct NEVER Error en REQUIRED Directo parametro numero: 101
+2024-10-06 20:50:31 [http-nio-8080-exec-7] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1223056946<open>)] for JPA transaction
+2024-10-06 20:50:32 [http-nio-8080-exec-7] ERROR d.g.t.DirectTransactionsService - -- Error en SUPPORTS numero: 101
+2024-10-06 20:50:32 [http-nio-8080-exec-7] DEBUG o.s.orm.jpa.JpaTransactionManager - Should roll back transaction but cannot - no transaction available
+2024-10-06 20:50:32 [http-nio-8080-exec-7] ERROR d.g.t.transaccionesController - Error dentro del controller direct SUPPORTS Error en REQUIRED Directo parametro numero: 101

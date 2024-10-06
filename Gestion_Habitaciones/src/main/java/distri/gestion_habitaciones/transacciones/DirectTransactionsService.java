@@ -23,18 +23,21 @@ public class DirectTransactionsService {
     private Boolean lanzar_exepcion;
 
 
-    @Transactional(propagation = Propagation.REQUIRED, timeout = 1, rollbackFor = Exception.class)
+
+    @Transactional(timeout = 1,propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
     public Habitacion byNumero_TIMEOUT(int numero) {
         Habitacion habitacion = habitacionRepository.findByNumero(numero).orElse(null);
 
+
+
         try {
+            log.info("Simulando una espera larga para provocar un timeout...");
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            throw new RuntimeException("Error de TIMEOUT en byNumero_TIMEOUT {}", e);
+            log.error("Error al intentar simular la espera: ", e);
         }
-        if (habitacion == null) {
-            return null;
-        }
+
+
         return habitacion;
     }
 

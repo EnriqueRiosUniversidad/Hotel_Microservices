@@ -52,7 +52,7 @@
     </appender>
 
     <!-- Definir el nivel de log global para toda la aplicación -->
-    <root level="ERROR">
+    <root level="INFO">
         <appender-ref ref="CONSOLE" />
       <appender-ref ref="FILE" />-
     </root>

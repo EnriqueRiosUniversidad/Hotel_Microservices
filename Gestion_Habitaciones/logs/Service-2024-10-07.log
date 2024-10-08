@@ -1,0 +1,2 @@
+2024-10-07 20:45:18 [http-nio-8080-exec-1] INFO  d.g.service.HabitacionService - Buscando habitación con ID: 101
+2024-10-07 20:45:18 [http-nio-8080-exec-1] INFO  d.g.service.HabitacionService - Habitación encontrada con ID: 101

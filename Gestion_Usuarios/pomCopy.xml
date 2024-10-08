@@ -6,14 +6,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.3</version>
-        <relativePath/>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <groupId>distri</groupId>
-    <artifactId>Gestion_Habitaciones</artifactId>
-    <version>1</version>
-    <name>Gestion_Habitaciones</name>
-    <description>Gestion_Habitaciones</description>
+    <artifactId>gestion_usuarios</artifactId>
+    <version>0.5</version>
+    <name>gestion_usuarios</name>
+    <description>gestion_usuarios</description>
     <url/>
 
     <properties>
@@ -21,31 +20,39 @@
         <spring-cloud.version>2023.0.3</spring-cloud.version>
     </properties>
 
+    <!-- comentario
+    recomentado por Henry
+    -->
+
     <!-- Gestionar las dependencias de Spring Cloud -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <version>2023.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
+
     <dependencies>
-        <!-- Dependencias principales -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency> -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Dependencias de desarrollo y testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -58,6 +65,11 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -68,7 +80,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Dependencias de Cache y Redis -->
+        <!-- CACHE-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -78,18 +90,13 @@
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
 
-        <!-- Dependencias adicionales -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
+        <!-- BEANS y Mapper -->
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>3.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>distri</groupId>
             <artifactId>Beans</artifactId>
@@ -98,11 +105,16 @@
             <systemPath>${project.basedir}/libs/Beans-3.0.jar</systemPath>
         </dependency>
 
-        <!-- Eureka Client -->
+        <!-- EUREKA Y MANAGER DE DEPENDENCIAS-->
+
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+
+
+
     </dependencies>
 
     <build>

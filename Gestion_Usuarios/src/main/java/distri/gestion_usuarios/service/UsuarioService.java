@@ -10,7 +10,6 @@ import distri.gestion_usuarios.repository.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -33,8 +32,6 @@ public class UsuarioService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Value("${lanzar.excepcion}")
-    private Boolean lanzar_exepcion;
 
     /*
         @Cacheable: Se usa para almacenar el resultado de métodos en el cache.
@@ -63,47 +60,26 @@ public class UsuarioService {
             usuario.setDeleted(false);
         }
 
-        /*HACEMOS LA PRUEBA*/
-        if (lanzar_exepcion) {
-            log.error("-- Error al crear el usuario con los datos: {}", createUserRequestDTO);
-            throw new Exception("Error al crear usuario");
-        }
-
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
         log.info("//// Usuario guardado exitosamente: {} ////", usuarioGuardado);
         return modelMapper.map(usuarioGuardado, UsuarioDTO.class);
     }
-    
+
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Page<UsuarioDTO> obtenerUsuarios(Pageable pageable) {
         return usuarioRepository.findByDeletedFalse(pageable)
                 .map(usuario -> modelMapper.map(usuario, UsuarioDTO.class));
     }
 
-    @Transactional(timeout = 5,propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = false, rollbackFor = Exception.class)
     @Cacheable(value = "usuarios", keyGenerator = "keyGenerator")
     //@Cacheable(value = "usuario", key = "#id")
     public UsuarioDTO obtenerUsuarioPorId(Long id) throws Exception {
         // Simulación de espera para provocar el rollback por timeout
-      /*
-      try {
-            log.info("Simulando una espera larga para provocar un timeout...");
-            Thread.sleep(2000);  // Espera de 2 segundos (excede el timeout de 1 segundo)
-        } catch (InterruptedException e) {
-            log.error("Error al intentar simular la espera: ", e);
-        }*/
-
 
         log.info("//// Buscando usuario con ID: {} En la base de datos. ////", id);
         Optional<Usuario> usuario = usuarioRepository.findByIdAndDeletedFalse(id);
 
-
-
-        /*HACEMOS LA PRUEBA*/
-        if (lanzar_exepcion) {
-            log.error("-- Error al Buscar el usuario con ID: {}", id);
-            throw new Exception("Error al buscar usuario");
-        }
 
         if (usuario.isPresent()) {
             return modelMapper.map(usuario.get(), UsuarioDTO.class);
@@ -171,5 +147,10 @@ public class UsuarioService {
         }
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+    @CacheEvict(value = "usuarios", keyGenerator = "keyGenerator")
+    public UsuarioDTO findByEmail(String email) {
+        return modelMapper.map(usuarioRepository.findByEmail(email), UsuarioDTO.class);
+    }
 
 }

@@ -1,0 +1,3 @@
+2024-10-10 16:29:53 [http-nio-8081-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 51 En la base de datos. ////
+2024-10-10 16:37:17 [http-nio-8081-exec-4] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 51 En la base de datos. ////
+2024-10-10 16:47:35 [http-nio-8081-exec-1] INFO  d.g.service.UsuarioService - //// Buscando usuario con ID: 51 En la base de datos. ////

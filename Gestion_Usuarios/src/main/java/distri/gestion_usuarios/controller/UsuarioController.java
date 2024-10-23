@@ -11,7 +11,11 @@
     import org.springframework.data.domain.Pageable;
     import org.springframework.http.HttpStatus;
     import org.springframework.http.ResponseEntity;
+    import org.springframework.security.access.prepost.PreAuthorize;
     import org.springframework.web.bind.annotation.*;
+
+    import org.springframework.security.core.Authentication;
+
 
     import java.util.Map;
 
@@ -146,5 +150,14 @@
     /*Pruebas de Transaction.
     *
     * */
+
+
+       // @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+        @GetMapping("/profile")
+        public ResponseEntity<UsuarioDTO> getUserProfile(Authentication authentication) {
+            String email = authentication.getName();
+            UsuarioDTO usuarioDTO = usuarioService.findByEmail(email);
+            return ResponseEntity.ok(usuarioDTO);
+        }
 
     }

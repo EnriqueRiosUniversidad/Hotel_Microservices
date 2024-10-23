@@ -1,0 +1,37 @@
+2024-10-09 09:19:29 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2043569601<open>)] for JPA transaction
+2024-10-09 09:19:29 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,timeout_5,-java.lang.Exception
+2024-10-09 09:19:29 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@65a9df0a]
+2024-10-09 09:19:30 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-09 09:19:30 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(2043569601<open>)]
+2024-10-09 09:19:30 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-09 15:57:45 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1597412202<open>)] for JPA transaction
+2024-10-09 16:39:31 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(371199317<open>)] for JPA transaction
+2024-10-09 16:39:31 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,timeout_5,-java.lang.Exception
+2024-10-09 16:39:31 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@231e44c1]
+2024-10-09 16:39:32 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-09 16:39:32 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(371199317<open>)]
+2024-10-09 16:39:32 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-09 16:43:34 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1248391709<open>)] for JPA transaction
+2024-10-09 16:43:34 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,timeout_5,-java.lang.Exception
+2024-10-09 16:43:35 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@44af1520]
+2024-10-09 16:43:35 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-09 16:43:35 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1248391709<open>)]
+2024-10-09 16:43:35 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-09 16:43:50 [http-nio-8081-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(446568851<open>)] for JPA transaction
+2024-10-09 16:43:50 [http-nio-8081-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,timeout_5,-java.lang.Exception
+2024-10-09 16:43:51 [http-nio-8081-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1459f4b0]
+2024-10-09 16:43:51 [http-nio-8081-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-09 16:43:51 [http-nio-8081-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(446568851<open>)]
+2024-10-09 16:43:51 [http-nio-8081-exec-10] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-09 17:05:50 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(664107903<open>)] for JPA transaction
+2024-10-09 17:05:50 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,timeout_5,-java.lang.Exception
+2024-10-09 17:05:50 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3a00b196]
+2024-10-09 17:05:50 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-09 17:05:50 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(664107903<open>)]
+2024-10-09 17:05:51 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2024-10-09 17:06:07 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1952045011<open>)] for JPA transaction
+2024-10-09 17:06:07 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [distri.gestion_usuarios.service.UsuarioService.obtenerUsuarioPorId]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,timeout_5,-java.lang.Exception
+2024-10-09 17:06:07 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@5c8bfb56]
+2024-10-09 17:06:07 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2024-10-09 17:06:07 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1952045011<open>)]
+2024-10-09 17:06:07 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction

@@ -1,0 +1,5 @@
+2024-10-09 09:21:26 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitaciones entre precios 100 y 200
+2024-10-09 15:48:46 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitaciones entre precios 100 y 200
+2024-10-09 15:53:27 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitaciones entre precios 100 y 200
+2024-10-09 15:55:27 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitaciones entre precios 100 y 200
+2024-10-09 15:57:19 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitaciones entre precios 100 y 200

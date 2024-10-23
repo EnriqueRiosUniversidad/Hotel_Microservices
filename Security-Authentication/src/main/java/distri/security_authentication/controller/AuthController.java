@@ -1,15 +1,15 @@
 package distri.security_authentication.controller;
 
 
-import distri.beans.domain.Usuario;
-import distri.beans.dto.UsuarioDTO;
 import distri.security_authentication.dto.LoginRequestDTO;
 import distri.security_authentication.dto.LoginResponseDTO;
 import distri.security_authentication.dto.RegisterRequestDTO;
 import distri.security_authentication.security.JwtTokenProvider;
 import distri.security_authentication.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -49,6 +49,24 @@ public class    AuthController {
         return ResponseEntity.ok("Usuario registrado exitosamente");
     }
 
+
+    @GetMapping("/verify")
+    public ResponseEntity<?> verifyToken(@RequestParam String token) {
+        if (!jwtTokenProvider.validateToken(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok("se puedo lograr");
+    }
+
+
+
+
+
+    @GetMapping("/email")
+    public ResponseEntity<String> getUserProfile(Authentication authentication) {
+        String email = authentication.getName();
+        return ResponseEntity.ok(email);
+    }
 
 
 }

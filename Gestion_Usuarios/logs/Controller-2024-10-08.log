@@ -1,0 +1,2 @@
+2024-10-08 18:33:47 [http-nio-8081-exec-1] INFO  d.g.controller.UsuarioController - //// Usuario obtenido con ID 51: UsuarioDTO(id=51, nombre=enrique, email=enrique@gmail.com, rol=RolDTO(id=2, nombre=USER, descripcion=Standard user role with limited access)) ////
+2024-10-08 18:37:18 [http-nio-8081-exec-1] INFO  d.g.controller.UsuarioController - //// Usuario obtenido con ID 51: UsuarioDTO(id=51, nombre=enrique, email=enrique@gmail.com, rol=RolDTO(id=2, nombre=USER, descripcion=Standard user role with limited access)) ////

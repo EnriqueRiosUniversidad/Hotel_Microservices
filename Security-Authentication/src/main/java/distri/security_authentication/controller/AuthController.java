@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.GrantedAuthority;
 
 @RestController
 @RequestMapping("/auth")
@@ -32,9 +33,15 @@ public class    AuthController {
                         loginRequest.getPassword()
                 )
         );
+        String role = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse("");
 
-        String token = jwtTokenProvider.createToken(authentication.getName(),
-                authentication.getAuthorities().toString());
+        String token = jwtTokenProvider.createToken(authentication.getName(), role);
+
+       // String token = jwtTokenProvider.createToken(authentication.getName(),
+          //      authentication.getAuthorities().toString());
 
         LoginResponseDTO response = new LoginResponseDTO();
         response.setEmail(authentication.getName());

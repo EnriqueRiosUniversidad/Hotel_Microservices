@@ -48,6 +48,7 @@
         }
 
         // Método para obtener usuarios paginados
+        @PreAuthorize("hasAnyRole('ADMIN')")
         @GetMapping
         public ResponseEntity<Page<UsuarioDTO>> obtenerUsuarios(
                 @RequestParam(value = "page", required = false) Integer page,
@@ -63,6 +64,7 @@
             return ResponseEntity.ok(usuarios);
         }
 
+        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @GetMapping("/{id}")
         public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable Long id) {
             try {
@@ -146,10 +148,6 @@
         }
 
 
-
-    /*Pruebas de Transaction.
-    *
-    * */
 
 
        // @PreAuthorize("hasAnyRole('ADMIN', 'USER')")

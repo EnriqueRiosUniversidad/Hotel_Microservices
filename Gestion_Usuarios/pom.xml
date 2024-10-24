@@ -102,11 +102,20 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- Seguridad -->
-        <!-- Spring Boot Starter Security -->
+                        <!-- Seguridad -->
+
+        <!-- Dependencia para Spring Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Dependencia para JWT -->
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
         </dependency>
 
         <!-- Spring Boot Starter AOP -->

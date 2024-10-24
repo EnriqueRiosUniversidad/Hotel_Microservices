@@ -39,6 +39,11 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
         <!-- Spring Security (opcional si necesitas seguridad en el API Gateway) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

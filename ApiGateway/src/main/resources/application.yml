@@ -26,8 +26,15 @@ spring:
 
         - id: seguridad
           predicates:
-            - Path=/auth/**
+            - Path=/auth/**,/user/**
           uri: ${AUTH_ROUTE_URI:http://localhost:8090}
+
+        - id: seguridad-user
+          uri: http://localhost:8090
+          predicates:
+            - Path=/user/**
+          filters:
+            - name: AuthFilter
         # - id: internal
         #  uri: http://localhost:8080
         #   predicates:

@@ -1,6 +1,6 @@
 package distri.security_authentication.dto;
 
-import distri.beans.dto.RolDTO;
+
 import lombok.Data;
 
 import java.io.Serializable;

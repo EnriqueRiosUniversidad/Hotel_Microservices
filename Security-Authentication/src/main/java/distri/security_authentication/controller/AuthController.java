@@ -4,6 +4,7 @@ package distri.security_authentication.controller;
 import distri.security_authentication.dto.LoginRequestDTO;
 import distri.security_authentication.dto.LoginResponseDTO;
 import distri.security_authentication.dto.RegisterRequestDTO;
+import distri.security_authentication.dto.VerifyResponseDTO;
 import distri.security_authentication.security.JwtTokenProvider;
 import distri.security_authentication.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -57,16 +58,33 @@ public class    AuthController {
     }
 
 
-    @GetMapping("/verify")
+    /*@GetMapping("/verify")
     public ResponseEntity<?> verifyToken(@RequestParam String token) {
         if (!jwtTokenProvider.validateToken(token)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         return ResponseEntity.ok("se puedo lograr");
+    }*/
+
+
+    @GetMapping("/verify")
+    public ResponseEntity<?> verifyToken(@RequestParam String token) {
+        if (!jwtTokenProvider.validateToken(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        // Obtener email y rol del token
+        String email = jwtTokenProvider.getEmail(token);
+        String role = jwtTokenProvider.getRole(token);
+
+        // Crear el DTO de respuesta
+        VerifyResponseDTO response = new VerifyResponseDTO();
+        response.setToken(token);
+        response.setEmail(email);
+        response.setRol(role);
+
+        return ResponseEntity.ok(response);
     }
-
-
-
 
 
     @GetMapping("/email")

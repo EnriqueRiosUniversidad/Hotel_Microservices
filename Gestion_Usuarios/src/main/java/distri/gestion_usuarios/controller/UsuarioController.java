@@ -48,7 +48,7 @@
         }
 
         // Método para obtener usuarios paginados
-        @PreAuthorize("hasAnyRole('ADMIN')")
+        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @GetMapping
         public ResponseEntity<Page<UsuarioDTO>> obtenerUsuarios(
                 @RequestParam(value = "page", required = false) Integer page,
@@ -77,6 +77,7 @@
             }
         }
 
+        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @GetMapping("/buscar")
         public ResponseEntity<Page<UsuarioDTO>> buscarUsuariosPorNombre(
                 @RequestParam("nombre") String nombre,
@@ -93,7 +94,7 @@
 
 
 
-
+        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @PatchMapping("/{id}")
         public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
             UsuarioDTO usuario = usuarioService.actualizarUsuarioPorId(id, usuarioDTO);
@@ -101,6 +102,7 @@
             return ResponseEntity.ok(usuario);
         }
 
+        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @DeleteMapping("/")
         public ResponseEntity<String> eliminarUsuarios(@RequestBody Map<String, Object> carga) {
             try {
@@ -149,13 +151,13 @@
 
 
 
-
-       // @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-        @GetMapping("/profile")
-        public ResponseEntity<UsuarioDTO> getUserProfile(Authentication authentication) {
-            String email = authentication.getName();
-            UsuarioDTO usuarioDTO = usuarioService.findByEmail(email);
-            return ResponseEntity.ok(usuarioDTO);
-        }
+            @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
+           // @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+            @GetMapping("/profile")
+            public ResponseEntity<UsuarioDTO> getUserProfile(Authentication authentication) {
+                String email = authentication.getName();
+                UsuarioDTO usuarioDTO = usuarioService.findByEmail(email);
+                return ResponseEntity.ok(usuarioDTO);
+            }
 
     }

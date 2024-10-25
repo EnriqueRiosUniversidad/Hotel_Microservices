@@ -1,7 +1,9 @@
 package distri.gestion_usuarios.config;
 
+import distri.gestion_usuarios.security.CustomAccessDeniedHandler;
 import distri.gestion_usuarios.security.UserContextFilter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -34,6 +36,8 @@ public class SecurityConfig {
 public class SecurityConfig {
 
     private final UserContextFilter userContextFilter;
+    @Autowired
+    private CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -45,6 +49,8 @@ public class SecurityConfig {
                         // Cualquier otra solicitud requiere autenticación
                         .anyRequest().authenticated()
                 )
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedHandler(customAccessDeniedHandler))
                 // No usar sesiones
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS)

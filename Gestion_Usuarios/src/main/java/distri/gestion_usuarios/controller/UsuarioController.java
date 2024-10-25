@@ -152,12 +152,20 @@
 
 
             @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
-           // @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
             @GetMapping("/profile")
-            public ResponseEntity<UsuarioDTO> getUserProfile(Authentication authentication) {
-                String email = authentication.getName();
+            public ResponseEntity<?> getUserProfile(Authentication authentication) {
+            String email = authentication.getName();
+                System.out.println("Email obtenido del Authentication: " + email);
                 UsuarioDTO usuarioDTO = usuarioService.findByEmail(email);
-                return ResponseEntity.ok(usuarioDTO);
+
+
+                if (usuarioDTO != null) {
+                    return ResponseEntity.ok(usuarioDTO);
+                }else {
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                            .body("Usuario no encontrado");
+                }
+
             }
 
     }

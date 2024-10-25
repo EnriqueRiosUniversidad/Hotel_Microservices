@@ -150,7 +150,12 @@ public class UsuarioService {
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
     @CacheEvict(value = "usuarios", keyGenerator = "keyGenerator")
     public UsuarioDTO findByEmail(String email) {
-        return modelMapper.map(usuarioRepository.findByEmail(email), UsuarioDTO.class);
+        Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+        if(usuario == null) {
+            return null;
+        }
+
+        return modelMapper.map(usuario, UsuarioDTO.class);
     }
 
 }

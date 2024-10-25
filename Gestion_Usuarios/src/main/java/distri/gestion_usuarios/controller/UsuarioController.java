@@ -22,6 +22,7 @@
     @Slf4j
     @RestController
     @RequestMapping("/usuarios")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public class UsuarioController {
 
         @Autowired
@@ -63,6 +64,7 @@
             return ResponseEntity.ok(usuarios);
         }
 
+
         @GetMapping("/{id}")
         public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable Long id) {
             try {
@@ -74,6 +76,7 @@
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
             }
         }
+
 
         @GetMapping("/buscar")
         public ResponseEntity<Page<UsuarioDTO>> buscarUsuariosPorNombre(
@@ -98,6 +101,7 @@
             log.info("//// Usuario actualizado con ID {}: {} ////", id, usuario);
             return ResponseEntity.ok(usuario);
         }
+
 
         @DeleteMapping("/")
         public ResponseEntity<String> eliminarUsuarios(@RequestBody Map<String, Object> carga) {
@@ -147,17 +151,21 @@
 
 
 
-    /*Pruebas de Transaction.
-    *
-    * */
-
-
-       // @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-        @GetMapping("/profile")
-        public ResponseEntity<UsuarioDTO> getUserProfile(Authentication authentication) {
+            @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
+            @GetMapping("/profile")
+            public ResponseEntity<?> getUserProfile(Authentication authentication) {
             String email = authentication.getName();
-            UsuarioDTO usuarioDTO = usuarioService.findByEmail(email);
-            return ResponseEntity.ok(usuarioDTO);
-        }
+                System.out.println("Email obtenido del Authentication: " + email);
+                UsuarioDTO usuarioDTO = usuarioService.findByEmail(email);
+
+
+                if (usuarioDTO != null) {
+                    return ResponseEntity.ok(usuarioDTO);
+                }else {
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                            .body("Usuario no encontrado");
+                }
+
+            }
 
     }

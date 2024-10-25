@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // Convertir el rol único a una lista de GrantedAuthority
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre());
-
+        System.out.println("Autoridades asignadas: " + authority);
         // Devolver el UserDetails con:  email, password y lista de authorities (contiene solo un rol)
         return new org.springframework.security.core.userdetails.User(
                 usuario.getEmail(),

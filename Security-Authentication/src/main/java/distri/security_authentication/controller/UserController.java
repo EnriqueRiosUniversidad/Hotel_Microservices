@@ -30,6 +30,7 @@ el cual saco de Authentication
 y con el busco las credenciales del usuario
 para filtrar los datos.
 */
+    //Inserta pre feijo 'ROLE_'
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/profile")
     public ResponseEntity<UsuarioDTO> getUserProfile(Authentication authentication) {
@@ -39,7 +40,8 @@ para filtrar los datos.
     }
 
     //@PreAuthorize("hasAuthority('ADMIN')")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    //@PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/getusers")
     public ResponseEntity<List<UsuarioDTO>> getUsers() {
 

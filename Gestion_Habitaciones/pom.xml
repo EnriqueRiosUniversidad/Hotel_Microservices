@@ -98,6 +98,12 @@
             <systemPath>${project.basedir}/libs/Beans-3.0.jar</systemPath>
         </dependency>
 
+        <!-- Seguridad -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!-- Eureka Client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

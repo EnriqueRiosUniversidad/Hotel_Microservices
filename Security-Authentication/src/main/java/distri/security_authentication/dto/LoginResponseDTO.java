@@ -1,7 +1,6 @@
 package distri.security_authentication.dto;
 
 import lombok.Data;
-
 import java.io.Serializable;
 
 @Data

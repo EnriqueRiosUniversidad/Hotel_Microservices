@@ -1,7 +1,8 @@
-package distri.gestion_usuarios.config;
+package distri.gestion_habitaciones.config;
 
-import distri.gestion_usuarios.security.CustomAccessDeniedHandler;
-import distri.gestion_usuarios.security.UserContextFilter;
+
+import distri.gestion_habitaciones.security.CustomAccessDeniedHandler;
+import distri.gestion_habitaciones.security.UserContextFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

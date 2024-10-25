@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -16,6 +17,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/habitaciones")
 @Slf4j
+
+
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_USER')")
 public class HabitacionController {
 
     @Autowired
@@ -23,6 +27,7 @@ public class HabitacionController {
 
     /* 1. Crear una nueva habitación */
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<HabitacionDTO> crearHabitacion(@RequestBody HabitacionDTO habitacionDTO) {
         try {
             log.info("Creando nueva habitacion: {}", habitacionDTO);
@@ -93,6 +98,7 @@ public class HabitacionController {
 
     /* 6. Actualizar una habitación */
     @PatchMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<HabitacionDTO> actualizarHabitacion(
             @PathVariable Long id, @RequestBody HabitacionDTO habitacionDTO) {
         try {
@@ -108,6 +114,7 @@ public class HabitacionController {
 
     /* 7. Eliminar una habitación (eliminación suave) */
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<HabitacionDTO> eliminarHabitacion(@PathVariable Long id) {
         try {
             log.info("Eliminando habitacion con ID: {}", id);
@@ -122,6 +129,7 @@ public class HabitacionController {
 
     /* 8. Restaurar una habitación eliminada */
     @PutMapping("/restaurar/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<HabitacionDTO> restaurarHabitacion(@PathVariable Long id) {
         try {
             log.info("Restaurando habitacion con ID: {}", id);

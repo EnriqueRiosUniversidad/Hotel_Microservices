@@ -15,3 +15,6 @@
 2024-10-25 10:01:29 [http-nio-8081-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(984560739<open>)] for JPA transaction
 2024-10-25 10:07:22 [http-nio-8081-exec-2] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(2097055011<open>)] for JPA transaction
 2024-10-25 10:07:49 [http-nio-8081-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1586863091<open>)] for JPA transaction
+2024-10-25 10:13:58 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(477735068<open>)] for JPA transaction
+2024-10-25 10:14:07 [http-nio-8081-exec-3] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(963933186<open>)] for JPA transaction
+2024-10-25 15:12:17 [http-nio-8081-exec-1] DEBUG o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1571051212<open>)] for JPA transaction

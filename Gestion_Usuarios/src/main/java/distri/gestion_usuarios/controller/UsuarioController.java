@@ -22,6 +22,7 @@
     @Slf4j
     @RestController
     @RequestMapping("/usuarios")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public class UsuarioController {
 
         @Autowired
@@ -48,7 +49,6 @@
         }
 
         // Método para obtener usuarios paginados
-        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
         @GetMapping
         public ResponseEntity<Page<UsuarioDTO>> obtenerUsuarios(
                 @RequestParam(value = "page", required = false) Integer page,
@@ -64,7 +64,7 @@
             return ResponseEntity.ok(usuarios);
         }
 
-        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
         @GetMapping("/{id}")
         public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable Long id) {
             try {
@@ -77,7 +77,7 @@
             }
         }
 
-        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
         @GetMapping("/buscar")
         public ResponseEntity<Page<UsuarioDTO>> buscarUsuariosPorNombre(
                 @RequestParam("nombre") String nombre,
@@ -94,7 +94,7 @@
 
 
 
-        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
         @PatchMapping("/{id}")
         public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
             UsuarioDTO usuario = usuarioService.actualizarUsuarioPorId(id, usuarioDTO);
@@ -102,7 +102,7 @@
             return ResponseEntity.ok(usuario);
         }
 
-        @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
         @DeleteMapping("/")
         public ResponseEntity<String> eliminarUsuarios(@RequestBody Map<String, Object> carga) {
             try {

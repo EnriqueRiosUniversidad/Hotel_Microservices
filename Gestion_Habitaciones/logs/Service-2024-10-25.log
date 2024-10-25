@@ -1,0 +1,4 @@
+2024-10-25 15:21:28 [http-nio-8082-exec-2] INFO  d.g.service.HabitacionService - Buscando habitación con ID: 101
+2024-10-25 15:21:28 [http-nio-8082-exec-2] INFO  d.g.service.HabitacionService - Habitación encontrada con ID: 101
+2024-10-25 15:22:19 [http-nio-8082-exec-3] INFO  d.g.service.HabitacionService - Iniciando actualización de la habitación con ID: 101
+2024-10-25 15:22:20 [http-nio-8082-exec-3] INFO  d.g.service.HabitacionService - Habitación actualizada exitosamente con ID: 101

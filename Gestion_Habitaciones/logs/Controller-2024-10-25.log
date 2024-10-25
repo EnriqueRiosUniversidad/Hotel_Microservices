@@ -1,0 +1,8 @@
+2024-10-25 15:21:27 [http-nio-8082-exec-2] INFO  d.g.controller.HabitacionController - Obteniendo habitacion con ID: 101
+2024-10-25 15:22:19 [http-nio-8082-exec-3] INFO  d.g.controller.HabitacionController - Actualizando habitacion con ID: 101
+2024-10-25 15:22:20 [http-nio-8082-exec-3] INFO  d.g.controller.HabitacionController - Habitacion actualizada exitosamente: HabitacionDTO(id=101, numero=101, tipo=sencilla, disponibilidad=false, precio=180.00)
+2024-10-25 15:25:37 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitacion con ID: 101
+2024-10-25 15:25:40 [http-nio-8082-exec-2] INFO  d.g.controller.HabitacionController - Obteniendo habitacion con ID: 101
+2024-10-25 15:27:28 [http-nio-8082-exec-1] INFO  d.g.controller.HabitacionController - Obteniendo habitacion con ID: 101
+2024-10-25 15:27:37 [http-nio-8082-exec-2] INFO  d.g.controller.HabitacionController - Obteniendo habitacion con ID: 101
+2024-10-25 15:27:49 [http-nio-8082-exec-3] INFO  d.g.controller.HabitacionController - Obteniendo habitacion con ID: 101

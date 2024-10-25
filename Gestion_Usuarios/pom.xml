@@ -110,13 +110,6 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Dependencia para JWT -->
-<!--
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version>
-        </dependency>-->
 
         <!-- Spring Boot Starter AOP -->
         <dependency>

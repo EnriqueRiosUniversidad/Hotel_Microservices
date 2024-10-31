@@ -14,21 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-/*@Configuration
-@EnableWebSecurity
-public class SecurityConfig {
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable());  // Disable CSRF protection
-
-
-        return http.build();
-    }
-}*/
-
-
 
 @Configuration
 @EnableWebSecurity

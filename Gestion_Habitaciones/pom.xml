@@ -95,7 +95,7 @@
             <artifactId>Beans</artifactId>
             <version>3.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Beans-3.0.jar</systemPath>
+            <systemPath>${project.basedir}/libs/Beans-4.0.jar</systemPath>
         </dependency>
 
         <!-- Seguridad -->

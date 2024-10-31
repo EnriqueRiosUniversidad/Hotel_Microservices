@@ -1,15 +1,16 @@
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/AppConfig.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/BaseEntity.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Detalle_Reserva.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Habitacion.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Notificacion.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Reserva.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Rol.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Usuario.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/BaseDTO.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/Detalle_ReservaDTO.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/HabitacionDTO.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/NotificacionDTO.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/ReservaDTO.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/RolDTO.java
-/media/enrique/Linux_Mint/Universidad/Sistemas Distribuidos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/UsuarioDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/AppConfig.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/BaseEntity.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Detalle_Reserva.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Habitacion.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Notificacion.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Reserva.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Rol.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/domain/Usuario.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/BaseDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/Detalle_ReservaDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/EstadoReserva.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/HabitacionDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/NotificacionDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/ReservaDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/RolDTO.java
+/home/henry/Documentos/Hotel_Microservices/Beans/src/main/java/distri/beans/dto/UsuarioDTO.java

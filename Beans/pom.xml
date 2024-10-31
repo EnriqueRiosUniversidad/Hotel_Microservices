@@ -13,7 +13,7 @@
 
     <groupId>distri</groupId>
     <artifactId>Beans</artifactId>
-    <version>3.0</version>
+    <version>4.0</version>
     <name>Beans</name>
     <description>Beans of Domain and DTOs</description>
 

@@ -6,12 +6,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -42,15 +45,15 @@ public class HabitacionController {
 
     /* 2. Obtener habitaciones por disponibilidad (no eliminadas) */
     @GetMapping("/disponibles")
-    public ResponseEntity<Page<HabitacionDTO>> obtenerHabitacionesPorDisponibilidad(
-            @RequestParam Boolean disponibilidad, Pageable pageable) {
+    public ResponseEntity<List<HabitacionDTO>> obtenerHabitacionesDisponibles(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) {
         try {
-            log.info("Obteniendo habitaciones con disponibilidad: {}", disponibilidad);
-            Page<HabitacionDTO> habitaciones = habitacionService.obtenerHabitacionesPorDisponibilidad(disponibilidad, pageable);
-            return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+            List<HabitacionDTO> habitacionesDisponibles = habitacionService.obtenerHabitacionesDisponibles(fechaInicio, fechaFin);
+            return ResponseEntity.ok(habitacionesDisponibles);
         } catch (Exception e) {
-            log.error("Error al obtener habitaciones por disponibilidad: {}", e.getMessage(), e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("Error al obtener habitaciones disponibles: {}", e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
@@ -141,4 +144,9 @@ public class HabitacionController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+
+
+
 }

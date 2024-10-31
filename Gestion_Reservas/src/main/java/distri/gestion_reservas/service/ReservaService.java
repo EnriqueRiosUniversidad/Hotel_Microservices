@@ -5,6 +5,7 @@ import distri.beans.domain.Detalle_Reserva;
 import distri.beans.domain.Habitacion;
 import distri.beans.domain.Reserva;
 import distri.beans.domain.Usuario;
+import distri.beans.dto.Detalle_ReservaDTO;
 import distri.beans.dto.EstadoReserva;
 import distri.beans.dto.HabitacionDTO;
 import distri.beans.dto.ReservaDTO;
@@ -20,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -41,54 +44,64 @@ public class ReservaService {
     private ModelMapper modelMapper;
 
 
+    @Transactional(propagation = Propagation.REQUIRED
+            , rollbackFor = Exception.class)
     public ReservaDTO crearReserva(ReservaDTO reservaDTO, String emailUsuario) {
         try {
-            Usuario usuario = usuarioRepository.findByEmail(emailUsuario)
-                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+            Usuario usuario = obtenerUsuarioPorEmail(emailUsuario);
+            Reserva nuevaReserva = inicializarReserva(usuario, reservaDTO);
 
-            // Create the Reserva instance and set basic properties
-            Reserva reserva = new Reserva();
-            reserva.setUsuario(usuario);
-            reserva.setFechaCreacion(LocalDateTime.now());
-            reserva.setFechaInicio(reservaDTO.getFechaInicio());
-            reserva.setFechaFin(reservaDTO.getFechaFin());
-            reserva.setEstado(EstadoReserva.PENDIENTE);
-            reserva.setDeleted(false);
-            reserva.setTotal(BigDecimal.ZERO);
-            // Save reserva to ensure it has an ID for setting in Detalle_Reserva instances
-            Reserva nuevaReserva = reservaRepository.save(reserva);
+            List<Detalle_Reserva> detalles = crearDetallesReserva(reservaDTO.getDetalles(), nuevaReserva.getId());
+            BigDecimal total = calcularTotalReserva(detalles);
 
-            final Long reservaID = nuevaReserva.getId();
-
-            // Map details and link them to the newly created reserva
-            List<Detalle_Reserva> detalles = reservaDTO.getDetalles().stream().map(detalleDTO -> {
-                Habitacion habitacion = habitacionRepository.findById(detalleDTO.getHabitacionId())
-                        .orElseThrow(() -> new RuntimeException("Habitación no encontrada"));
-
-                Detalle_Reserva detalleReserva = new Detalle_Reserva();
-                detalleReserva.setReservaId(reservaID);
-                detalleReserva.setHabitacionId(habitacion.getId());
-                detalleReserva.setPrecio(habitacion.getPrecio());
-                detalleReserva.setDeleted(false);
-                return detalleReserva;
-            }).collect(Collectors.toList());
-
-            // Calculate the total price and set the details
-            BigDecimal total = detalles.stream()
-                    .map(Detalle_Reserva::getPrecio)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add);
-            nuevaReserva.setTotal(total);
             nuevaReserva.setDetalles(detalles);
+            nuevaReserva.setTotal(total);
 
-            // Save the updated reserva with details
-            nuevaReserva = reservaRepository.save(nuevaReserva);
+            reservaRepository.save(nuevaReserva); // Se guarda solo una vez
 
-            // Map to DTO and return
             return modelMapper.map(nuevaReserva, ReservaDTO.class);
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error al crear la reserva", e);
         }
+    }
+
+    // Métodos privados para modularizar la lógica
+    private Usuario obtenerUsuarioPorEmail(String emailUsuario) {
+        return usuarioRepository.findByEmail(emailUsuario)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+
+    private Reserva inicializarReserva(Usuario usuario, ReservaDTO reservaDTO) {
+        Reserva reserva = new Reserva();
+        reserva.setUsuario(usuario);
+        reserva.setFechaCreacion(LocalDateTime.now());
+        reserva.setFechaInicio(reservaDTO.getFechaInicio());
+        reserva.setFechaFin(reservaDTO.getFechaFin());
+        reserva.setEstado(EstadoReserva.PENDIENTE);
+        reserva.setDeleted(false);
+        reserva.setTotal(BigDecimal.ZERO); // Inicialización del total
+        return reservaRepository.save(reserva); // Se guarda una vez para obtener el ID
+    }
+
+    private List<Detalle_Reserva> crearDetallesReserva(List<Detalle_ReservaDTO> detallesDTO, Long reservaID) {
+        return detallesDTO.stream().map(detalleDTO -> {
+            Habitacion habitacion = habitacionRepository.findById(detalleDTO.getHabitacionId())
+                    .orElseThrow(() -> new RuntimeException("Habitación no encontrada"));
+
+            Detalle_Reserva detalleReserva = new Detalle_Reserva();
+            detalleReserva.setReservaId(reservaID);
+            detalleReserva.setHabitacionId(habitacion.getId());
+            detalleReserva.setPrecio(habitacion.getPrecio());
+            detalleReserva.setDeleted(false);
+            return detalleReserva;
+        }).collect(Collectors.toList());
+    }
+
+    private BigDecimal calcularTotalReserva(List<Detalle_Reserva> detalles) {
+        return detalles.stream()
+                .map(Detalle_Reserva::getPrecio)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
 
@@ -108,7 +121,8 @@ DETALLES
     private BigDecimal precio;
 */
 
-
+    @Transactional(propagation = Propagation.SUPPORTS
+            , rollbackFor = Exception.class)
     public Page<ReservaDTO> findAll(Pageable pageable) {
 
         try {

@@ -24,6 +24,14 @@ spring:
           filters:
             - name: AuthFilter
 
+        - id: reservas
+          uri: http://localhost:8083
+          predicates:
+            - Path=/reservas/**
+          filters:
+            - name: AuthFilter
+
+
         - id: seguridad
           predicates:
             - Path=/auth/**,/user/**

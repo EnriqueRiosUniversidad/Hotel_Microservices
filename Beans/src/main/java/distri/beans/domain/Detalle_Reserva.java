@@ -14,19 +14,17 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Detalle_Reserva extends BaseEntity{
+public class Detalle_Reserva extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "reserva_id" , nullable = false)
-    private Reserva reserva;
+    @Column(name = "reserva_id", nullable = false)
+    private Long reservaId;
 
-    @ManyToOne
-    @JoinColumn(name = "habitacion_id", nullable = false)
-    private Habitacion habitacion;
+    @Column(name = "habitacion_id", nullable = false)
+    private Long habitacionId;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    BigDecimal precio;
-
+    private BigDecimal precio;
 }
+
 
 

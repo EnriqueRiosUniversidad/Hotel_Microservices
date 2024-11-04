@@ -1,9 +1,10 @@
 distri/beans/domain/BaseEntity.class
 distri/beans/domain/Notificacion.class
 distri/beans/AppConfig.class
+distri/beans/dto/EstadoReserva.class
 distri/beans/dto/RolDTO.class
-distri/beans/domain/Rol.class
 distri/beans/dto/UsuarioDTO.class
+distri/beans/domain/Rol.class
 distri/beans/dto/ReservaDTO.class
 distri/beans/dto/NotificacionDTO.class
 distri/beans/dto/BaseDTO.class

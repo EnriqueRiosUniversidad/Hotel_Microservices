@@ -1,8 +1,10 @@
 package distri.gestion_habitaciones.service;
 
 import distri.beans.domain.Habitacion;
+import distri.beans.domain.Reserva;
 import distri.beans.dto.HabitacionDTO;
 import distri.gestion_habitaciones.repository.HabitacionRepository;
+import distri.gestion_habitaciones.repository.ReservaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -14,7 +16,10 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -22,7 +27,8 @@ public class HabitacionService {
 
     @Autowired
     private HabitacionRepository habitacionRepository;
-
+    @Autowired
+    private ReservaRepository reservaRepository;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -177,4 +183,25 @@ public class HabitacionService {
             throw new RuntimeException("Error al restaurar la habitación: " + e.getMessage());
         }
     }
+
+
+
+/* 1- Buscar las habitaciones reservadas entre A y B fechas
+    2- Optione todas las habitacines que NO estan en esa lista
+    3- Retorna un conjunto de habitaciones
+* */
+    public List<HabitacionDTO> obtenerHabitacionesDisponibles(LocalDate fechaInicio, LocalDate fechaFin) {
+        // Obtener IDs de habitaciones que están reservadas en el rango de fechas
+        List<Long> habitacionesReservadasIds = reservaRepository.findHabitacionesReservadasEntreFechas(fechaInicio, fechaFin);
+
+        // Obtener habitaciones que no están en la lista de habitaciones reservadas
+        List<Habitacion> habitacionesDisponibles = habitacionRepository.findByIdNotIn(habitacionesReservadasIds);
+
+        // Mapear a DTOs
+        return habitacionesDisponibles.stream()
+                .map(habitacion -> modelMapper.map(habitacion, HabitacionDTO.class))
+                .collect(Collectors.toList());
+    }
+
+
 }

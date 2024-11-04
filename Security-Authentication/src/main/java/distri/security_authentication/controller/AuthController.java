@@ -58,14 +58,6 @@ public class    AuthController {
     }
 
 
-    /*@GetMapping("/verify")
-    public ResponseEntity<?> verifyToken(@RequestParam String token) {
-        if (!jwtTokenProvider.validateToken(token)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        return ResponseEntity.ok("se puedo lograr");
-    }*/
-
 
     @GetMapping("/verify")
     public ResponseEntity<?> verifyToken(@RequestParam String token) {

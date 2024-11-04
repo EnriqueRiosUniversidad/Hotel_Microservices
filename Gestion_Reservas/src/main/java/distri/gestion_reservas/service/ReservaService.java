@@ -11,6 +11,7 @@ import distri.beans.dto.HabitacionDTO;
 import distri.beans.dto.ReservaDTO;
 import distri.beans.AppConfig;
 
+import distri.gestion_reservas.repository.DetalleReservaRepository;
 import distri.gestion_reservas.repository.HabitacionRepository;
 import distri.gestion_reservas.repository.ReservaRepository;
 import distri.gestion_reservas.repository.UsuarioRepository;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +38,8 @@ import java.util.stream.Collectors;
 public class ReservaService {
     @Autowired
     private final ReservaRepository reservaRepository;
+    @Autowired
+    private final DetalleReservaRepository detalleReservaRepository;
     @Autowired
     private final UsuarioRepository usuarioRepository;
     @Autowired
@@ -98,11 +102,7 @@ public class ReservaService {
         }).collect(Collectors.toList());
     }
 
-    private BigDecimal calcularTotalReserva(List<Detalle_Reserva> detalles) {
-        return detalles.stream()
-                .map(Detalle_Reserva::getPrecio)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
+
 
 
 
@@ -126,10 +126,10 @@ DETALLES
     public Page<ReservaDTO> findAll(Pageable pageable) {
 
         try {
-            Page<Reserva> reservas = reservaRepository.findAll(pageable);
-            log.info("Cantidad de reservas obtenidas: {}", reservas.getTotalElements());
-
+            //Page<Reserva> reservas = reservaRepository.findAll(pageable);
             Page<Reserva> reservasPage = reservaRepository.findAll(pageable);
+            log.info("Cantidad de reservas obtenidas: {}", reservasPage.getTotalElements());
+
             return reservasPage.map(reserva -> modelMapper.map(reserva, ReservaDTO.class));
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -138,11 +138,116 @@ DETALLES
     }
 
 
+    //--------2 /mis-reservas --------//
+    // Obtener reservas del usuario actual
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+    public Page<ReservaDTO> obtenerReservasDelUsuario(Pageable pageable, String emailUsuario) {
+        Usuario usuario = usuarioRepository.findByEmail(emailUsuario)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        Page<Reserva> reservas = reservaRepository.findByUsuarioId(pageable, usuario.getId());
+
+        return reservas.map(reserva -> modelMapper.map(reserva, ReservaDTO.class));
+    }
+
+
+    //----------3 /reservas/{id} Obtiene por el usuario actual una reserva espesifica
+
+    // Obtener una reserva por ID y usuario
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+    public ReservaDTO obtenerReservaPorIdYUsuario(Long id, String emailUsuario) {
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+
+        if (!reserva.getUsuario().getEmail().equals(emailUsuario)) {
+            throw new RuntimeException("No tiene permiso para ver esta reserva");
+        }
+
+        return modelMapper.map(reserva, ReservaDTO.class);
+    }
+
+
+    //    ---------- 4   Actualizar una reserva
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ReservaDTO actualizarReserva(Long reserva_Id, ReservaDTO reservaDTO, String emailUsuario) {
+        Reserva reserva = reservaRepository.findById(reserva_Id)
+                .orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+
+        // Verificar que el usuario tenga permiso para actualizar esta reserva
+        if (!reserva.getUsuario().getEmail().equals(emailUsuario)) {
+            throw new RuntimeException("No tiene permiso para actualizar esta reserva");
+        }
+
+        // Verificar que la reserva aún no ha comenzado
+        if (reserva.getFechaInicio().isBefore(LocalDate.now())) {
+            throw new RuntimeException("No puede actualizar una reserva que ya ha comenzado");
+        }
+
+        // Usar las fechas proporcionadas o, si no están presentes, mantener las actuales
+        LocalDate nuevaFechaInicio = reservaDTO.getFechaInicio() != null ? reservaDTO.getFechaInicio() : reserva.getFechaInicio();
+        LocalDate nuevaFechaFin = reservaDTO.getFechaFin() != null ? reservaDTO.getFechaFin() : reserva.getFechaFin();
+
+        // Verificar si los detalles están presentes en el JSON
+        if (reservaDTO.getDetalles() != null && !reservaDTO.getDetalles().isEmpty()) {
+            // Validar que cada habitación en los nuevos detalles existe
+            for (Detalle_ReservaDTO detalleDTO : reservaDTO.getDetalles()) {
+                Long habitacionId = detalleDTO.getHabitacionId();
+                if (!habitacionRepository.existsById(habitacionId)) {
+                    throw new RuntimeException("Habitación con ID " + habitacionId + " no encontrada");
+                }
+            }
+
+            // Eliminar todos los detalles de la reserva en una sola consulta
+            detalleReservaRepository.deleteByReservaId(reserva.getId());
+
+            List<Detalle_Reserva> nuevosDetalles = crearDetallesReserva(reservaDTO.getDetalles(), reserva_Id);
+
+            reserva.getDetalles().addAll(nuevosDetalles);
+        }
+
+        // Actualizar las fechas de inicio y fin de la reserva
+        reserva.setFechaInicio(nuevaFechaInicio);
+        reserva.setFechaFin(nuevaFechaFin);
+
+        // Recalcular el total de la reserva con los nuevos detalles y fechas
+        BigDecimal nuevoTotal = calcularTotalReserva(reserva.getDetalles(), nuevaFechaInicio, nuevaFechaFin);
+        reserva.setTotal(nuevoTotal);
+
+        Reserva reservaActualizada = reservaRepository.save(reserva);
+        return modelMapper.map(reservaActualizada, ReservaDTO.class);
+    }
 
 
 
 
-    /*------------------------------------------------------------*/
+
+
+    /*---------Codigo Utilitario Begin*/
+    private BigDecimal calcularTotalReserva(List<Detalle_Reserva> detalles) {
+        return detalles.stream()
+                .map(Detalle_Reserva::getPrecio)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+/*  La politica del hotel es que, el dia donde el huesped se
+    retira es dia de limpieza y ese dia no se puede asignar la habitacion.
+* */
+    private BigDecimal calcularTotalReserva(List<Detalle_Reserva> detalles, LocalDate fechaInicio, LocalDate fechaFin) {
+        long dias = java.time.temporal.ChronoUnit.DAYS.between(fechaInicio, fechaFin);
+        return detalles.stream()
+                .map(detalle -> detalle.getPrecio().multiply(BigDecimal.valueOf(dias)))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+
+
+
+    //---------Codigo Utilitario End-------//
+
+
+
+
+
+
 
     public Optional<ReservaDTO> findById(Long id) {
         return reservaRepository.findById(id)

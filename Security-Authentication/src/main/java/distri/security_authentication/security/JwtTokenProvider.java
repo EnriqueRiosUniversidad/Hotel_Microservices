@@ -35,6 +35,10 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date validity = new Date(now.getTime() + expirationTime);
 
+
+        // Log the dates
+        System.out.println("Token issued at: " + now);
+        System.out.println("Token expires at: " + validity);
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)

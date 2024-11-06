@@ -43,10 +43,7 @@ spring:
             - Path=/user/**
           filters:
             - name: AuthFilter
-        # - id: internal
-        #  uri: http://localhost:8080
-        #   predicates:
-        #     - Path=/process/**
+
 
 
 eureka:

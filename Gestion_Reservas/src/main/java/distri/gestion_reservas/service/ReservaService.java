@@ -7,9 +7,9 @@ import distri.beans.domain.Reserva;
 import distri.beans.domain.Usuario;
 import distri.beans.dto.Detalle_ReservaDTO;
 import distri.beans.dto.EstadoReserva;
-import distri.beans.dto.HabitacionDTO;
+
 import distri.beans.dto.ReservaDTO;
-import distri.beans.AppConfig;
+
 
 import distri.gestion_reservas.repository.DetalleReservaRepository;
 import distri.gestion_reservas.repository.HabitacionRepository;
@@ -21,9 +21,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -121,25 +123,10 @@ DETALLES
     private BigDecimal precio;
 */
 
-    @Transactional(propagation = Propagation.SUPPORTS
-            , rollbackFor = Exception.class)
-    public Page<ReservaDTO> findAll(Pageable pageable) {
-
-        try {
-            //Page<Reserva> reservas = reservaRepository.findAll(pageable);
-            Page<Reserva> reservasPage = reservaRepository.findAll(pageable);
-            log.info("Cantidad de reservas obtenidas: {}", reservasPage.getTotalElements());
-
-            return reservasPage.map(reserva -> modelMapper.map(reserva, ReservaDTO.class));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
 
     //--------2 /mis-reservas --------//
     // Obtener reservas del usuario actual
+
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
     public Page<ReservaDTO> obtenerReservasDelUsuario(Pageable pageable, String emailUsuario) {
         Usuario usuario = usuarioRepository.findByEmail(emailUsuario)
@@ -152,22 +139,23 @@ DETALLES
 
 
     //----------3 /reservas/{id} Obtiene por el usuario actual una reserva espesifica
-
+    //Si es ADMIN puede ver igual la reserva
     // Obtener una reserva por ID y usuario
+
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
-    public ReservaDTO obtenerReservaPorIdYUsuario(Long id, String emailUsuario) {
+    public ReservaDTO obtenerReservaPorIdYUsuario(Long id, String emailUsuario, String rolUsuario) {
         Reserva reserva = reservaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
 
-        if (!reserva.getUsuario().getEmail().equals(emailUsuario)) {
+        if (!reserva.getUsuario().getEmail().equals(emailUsuario) && !rolUsuario.equals("ROLE_ADMIN")) {
             throw new RuntimeException("No tiene permiso para ver esta reserva");
         }
 
         return modelMapper.map(reserva, ReservaDTO.class);
     }
 
-
     //    ---------- 4   Actualizar una reserva
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ReservaDTO actualizarReserva(Long reserva_Id, ReservaDTO reservaDTO, String emailUsuario) {
         Reserva reserva = reservaRepository.findById(reserva_Id)
@@ -217,9 +205,80 @@ DETALLES
         return modelMapper.map(reservaActualizada, ReservaDTO.class);
     }
 
+    //    ------------5  Cancelar una reserva (antes de la fecha de inicio)
+    // Cancelar una reserva (USER / ADMIN)
+
+    @Transactional(propagation = Propagation.REQUIRED
+            , rollbackFor = Exception.class)
+    public void cancelarReserva(Long id, String emailUsuario, String rolUsuario) {
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+
+        if (!reserva.getUsuario().getEmail().equals(emailUsuario) && !rolUsuario.equals("ROLE_ADMIN")) {
+            throw new RuntimeException("No tiene permiso para cancelar esta reserva");
+        }
+
+        // Verificar que la reserva aún no ha comenzado
+        if (reserva.getFechaInicio().isBefore(LocalDateTime.now().toLocalDate())) {
+            throw new RuntimeException("No puede cancelar una reserva que ya ha comenzado");
+        }
+
+        reserva.setEstado(EstadoReserva.CANCELADA);
+        reservaRepository.save(reserva);// Cancelar una reserva
 
 
+    }
 
+    // -----------------METODOS ADMIN ---------------
+    // 6 OBTENER TODAS LAS RESERVAS
+    @Transactional(propagation = Propagation.SUPPORTS
+            , rollbackFor = Exception.class)
+    public Page<ReservaDTO> findAll(Pageable pageable) {
+
+        try {
+            //Page<Reserva> reservas = reservaRepository.findAll(pageable);
+            Page<Reserva> reservasPage = reservaRepository.findAll(pageable);
+            log.info("Cantidad de reservas obtenidas: {}", reservasPage.getTotalElements());
+
+            return reservasPage.map(reserva -> modelMapper.map(reserva, ReservaDTO.class));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    // 7  Obtener reservas por usuario (ROLE_ADMIN)
+
+    public Page<ReservaDTO> obtenerReservasPorUsuario(Long usuarioId, Pageable pageable) {
+        Page<Reserva> reservas = reservaRepository.findByUsuarioId(pageable, usuarioId);
+        return reservas.map(reserva -> modelMapper.map(reserva, ReservaDTO.class));
+    }
+
+    // 8 Obtener reservas por habitacion
+    @Transactional(propagation = Propagation.SUPPORTS
+            , rollbackFor = Exception.class)
+    public Page<ReservaDTO> obtenerReservasPorHabitacion(Long habitacionId, Pageable pageable) {
+        Page<Reserva> reservas = reservaRepository.findByHabitacionId(habitacionId, pageable);
+
+        return reservas.map(reserva -> modelMapper.map(reserva, ReservaDTO.class));
+
+    }
+
+
+    // 9   Actualizar el estado de una reserva (ROLE_ADMIN)
+    @Transactional(propagation = Propagation.REQUIRED,
+            rollbackFor = Exception.class)
+    public void actualizarEstadoReserva(Long id, EstadoReserva estado) {
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+
+        reserva.setEstado(estado);
+        reservaRepository.save(reserva);
+        return ;
+        //Reserva reservaActualizada =
+        //return reservaActualizada;
+       // return modelMapper.map(reservaActualizada, ReservaDTO.class);
+    }
 
 
     /*---------Codigo Utilitario Begin*/
@@ -228,9 +287,10 @@ DETALLES
                 .map(Detalle_Reserva::getPrecio)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
-/*  La politica del hotel es que, el dia donde el huesped se
-    retira es dia de limpieza y ese dia no se puede asignar la habitacion.
-* */
+
+    /*  La politica del hotel es que, el dia donde el huesped se
+        retira es dia de limpieza y ese dia no se puede asignar la habitacion.
+    * */
     private BigDecimal calcularTotalReserva(List<Detalle_Reserva> detalles, LocalDate fechaInicio, LocalDate fechaFin) {
         long dias = java.time.temporal.ChronoUnit.DAYS.between(fechaInicio, fechaFin);
         return detalles.stream()
@@ -239,14 +299,7 @@ DETALLES
     }
 
 
-
-
     //---------Codigo Utilitario End-------//
-
-
-
-
-
 
 
     public Optional<ReservaDTO> findById(Long id) {

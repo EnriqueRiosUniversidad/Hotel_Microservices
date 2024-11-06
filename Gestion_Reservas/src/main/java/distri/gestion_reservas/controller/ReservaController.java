@@ -2,6 +2,7 @@ package distri.gestion_reservas.controller;
 
 
 import distri.beans.domain.Reserva;
+import distri.beans.dto.EstadoReserva;
 import distri.beans.dto.ReservaDTO;
 import distri.gestion_reservas.service.ReservaService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservas")
@@ -58,16 +60,16 @@ public class ReservaController {
     public ResponseEntity<Page<ReservaDTO>> obtenerReservasDelUsuario(
             Authentication authentication,
             @RequestParam(value = "page", required = false) Integer page,
-            @RequestParam(value = "size", required = false) Integer size ) {
+            @RequestParam(value = "size", required = false) Integer size) {
         // Si no se proporcionan parámetros en la solicitud HTTP, usar los valores por defecto
         int pageNumber = (page != null) ? page : defaultPageNumber;
         int pageSize = (size != null) ? size : defaultPageSize;
 
-            Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
         try {
             String emailUsuario = authentication.getName();
-            Page<ReservaDTO> reservas = reservaService.obtenerReservasDelUsuario( pageable, emailUsuario);
+            Page<ReservaDTO> reservas = reservaService.obtenerReservasDelUsuario(pageable, emailUsuario);
             return ResponseEntity.ok(reservas);
         } catch (Exception e) {
             log.error("Error al obtener reservas del usuario: {}", e.getMessage(), e);
@@ -79,11 +81,14 @@ public class ReservaController {
 //----------------------IMPLEMENTAR CACHEABLE-------------------------
 
     // 3. Obtener una reserva específica del usuario actual (ROLE_USER, ROLE_ADMIN)
+    //Si es un ROLE_USER solo ve sus reservas
+    //Si es un ROLE_ADMIN ve cualquier reserva a traves del id
     @GetMapping("/{id}")
     public ResponseEntity<?> obtenerReservaPorId(@PathVariable Long id, Authentication authentication) {
         try {
-            String emailUsuario = authentication.getName(   );
-            ReservaDTO reserva = reservaService.obtenerReservaPorIdYUsuario(id, emailUsuario);
+            String emailUsuario = authentication.getName();
+            String rolUsuario = authentication.getAuthorities().stream().findFirst().orElseThrow(null).getAuthority();
+            ReservaDTO reserva = reservaService.obtenerReservaPorIdYUsuario(id, emailUsuario, rolUsuario);
             return ResponseEntity.ok(reserva);
         } catch (Exception e) {
             log.error("Error al obtener la reserva con ID {}: {}", id, e.getMessage(), e);
@@ -105,12 +110,25 @@ public class ReservaController {
         }
     }
 
+    // ---------------- Eliinar de cache -------------------
+    // 5. Cancelar una reserva (ROLE_USER, ROLE_ADMIN)
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')")
+    @DeleteMapping("/cancelar/{id}")
+    public ResponseEntity<?> cancelarReserva(@PathVariable Long id, Authentication authentication) {
+        try {
+            String emailUsuario = authentication.getName();
+            String rolUsuario = authentication.getAuthorities().stream().findFirst().orElseThrow(null).getAuthority();
+            reservaService.cancelarReserva(id, emailUsuario, rolUsuario);
+            return ResponseEntity.ok("Reserva cancelada exitosamente");
+        } catch (Exception e) {
+            log.error("Error al cancelar la reserva con ID {}: {}", id, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
-
-
-
-
-
+    // -------- Endpoints para administradores (ROLE_ADMIN) --------4
+    //6  Obtener todas las reservas
+    //
     @GetMapping
     public ResponseEntity<Page<ReservaDTO>> obtenerReservas(Pageable pageable) {
         try {
@@ -124,6 +142,62 @@ public class ReservaController {
 
     }
 
+
+    // 7. Obtener reservas por usuario (ROLE_ADMIN)
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<Page<ReservaDTO>> obtenerReservasPorUsuario(@PathVariable Long usuarioId,
+                                                                      @RequestParam(value = "page", required = false) Integer page,
+                                                                      @RequestParam(value = "size", required = false) Integer size) {
+
+        int pageNumber = (page != null) ? page : defaultPageNumber;
+        int pageSize = (size != null) ? size : defaultPageSize;
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        try {
+            Page<ReservaDTO> reservas = reservaService.obtenerReservasPorUsuario(usuarioId, pageable);
+            return ResponseEntity.ok(reservas);
+        } catch (Exception e) {
+            log.error("Error al obtener reservas para el usuario {}: {}", usuarioId, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+    // 8. Obtener reservas por habitación (ROLE_ADMIN)
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @GetMapping("/habitacion/{habitacionId}")
+    public ResponseEntity<Page<ReservaDTO>> obtenerReservasPorHabitacion(
+            @PathVariable Long habitacionId,
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value= "size", required = false) Integer size) {
+        int pageNumber = (page != null) ? page : defaultPageNumber;
+        int pageSize = (size != null) ? size : defaultPageSize;
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        try {
+            Page<ReservaDTO> reservas = reservaService.obtenerReservasPorHabitacion(habitacionId, pageable);
+            return ResponseEntity.ok(   reservas);
+        } catch (Exception e) {
+            log.error("Error al obtener reservas para la habitación {}: {}", habitacionId, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    // 9. Actualizar el ESTADO de una reserva (ROLE_ADMIN)
+    //PENDIENTE
+    //CONFIRMADA
+    //CANCELADA
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PutMapping("/{id}/estado")
+    public ResponseEntity<?> actualizarEstadoReserva(@PathVariable Long id, @RequestParam EstadoReserva estado) {
+        try {
+            //ReservaDTO reservaActualizada = reservaService.actualizarEstadoReserva(id, estado);
+            reservaService.actualizarEstadoReserva(id, estado);
+            return ResponseEntity.ok(estado);
+        } catch (Exception e) {
+            log.error("Error al actualizar el estado de la reserva con ID {}: {}", id, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
 }
 

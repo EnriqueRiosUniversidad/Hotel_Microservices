@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -132,7 +133,7 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
 */
 
 
-@Component
+//@Component
 @Slf4j
 public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> {
 
@@ -153,6 +154,13 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
             log.debug("AuthFilter invocado para el PATH: {}", exchange.getRequest().getPath());
+
+
+           /* // Ignorar solicitudes OPTIONS
+            if (HttpMethod.OPTIONS.equals(exchange.getRequest().getMethod())) {
+                return chain.filter(exchange);
+            }*/
+
 
             String authHeader = exchange.getRequest().getHeaders().getFirst(AUTHORIZATION_HEADER);
 
@@ -208,6 +216,6 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
     }
 
     public static class Config {
-        // Configuración personalizada si es necesaria
+
     }
 }

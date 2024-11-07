@@ -9,6 +9,7 @@ spring:
 
   cloud:
     gateway:
+
       routes:
         - id: usuarios
           uri: http://localhost:8081
@@ -43,11 +44,6 @@ spring:
             - Path=/user/**
           filters:
             - name: AuthFilter
-        # - id: internal
-        #  uri: http://localhost:8080
-        #   predicates:
-        #     - Path=/process/**
-
 
 eureka:
   client:

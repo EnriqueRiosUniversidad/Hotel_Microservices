@@ -1,10 +1,12 @@
 package distri.gestion_reservas.repository;
 
 import distri.beans.domain.Reserva;
+import distri.beans.dto.HabitacionDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -28,4 +30,7 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
                                           Long reservaId,
                                           LocalDate fechaInicio,
                                           LocalDate fechaFin);
+
+    @Query("SELECT r FROM Reserva r JOIN r.detalles d WHERE d.habitacionId = :habitacionId")
+    Page<Reserva> findByHabitacionId (@Param("habitacionId") Long habitacionId, Pageable pageable);
 }

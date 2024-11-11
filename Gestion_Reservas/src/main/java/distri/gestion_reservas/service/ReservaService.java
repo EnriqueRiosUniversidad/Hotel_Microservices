@@ -58,8 +58,10 @@ public class ReservaService {
             Reserva nuevaReserva = inicializarReserva(usuario, reservaDTO);
 
             List<Detalle_Reserva> detalles = crearDetallesReserva(reservaDTO.getDetalles(), nuevaReserva.getId());
-            BigDecimal total = calcularTotalReserva(detalles);
 
+            //BigDecimal total = calcularTotalReserva(detalles);
+
+            BigDecimal total = calcularTotalReserva(detalles, reservaDTO.getFechaInicio(), reservaDTO.getFechaFin());
             nuevaReserva.setDetalles(detalles);
             nuevaReserva.setTotal(total);
 

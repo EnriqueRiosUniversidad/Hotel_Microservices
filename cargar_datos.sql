@@ -63,93 +63,106 @@ INSERT INTO Usuario (nombre, email, password, rol_id) VALUES
 
 
 
--- Insert test rooms
-INSERT INTO Habitacion (id, numero, tipo, disponibilidad, precio) VALUES
-(101, 101, 'Single', true, 100.00),
-(102, 102, 'Double', true, 150.00),
-(103, 103, 'Suite', false, 300.00), -- Suite is not available
-(104, 104, 'Single', true, 120.00),
-(105, 105, 'Double', false, 180.00), -- Double room is not available
-(106, 106, 'Suite', true, 350.00),
-(107, 107, 'Single', true, 110.00),
-(108, 108, 'Double', true, 170.00),
-(109, 109, 'Suite', false, 400.00), -- Suite is not available
-(110, 110, 'Single', true, 130.00);
+    -- Insert test rooms
+    INSERT INTO Habitacion (id, numero, tipo, disponibilidad, precio) VALUES
+    (101, 101, 'Single', true, 100.00),
+    (102, 102, 'Double', true, 150.00),
+    (103, 103, 'Suite', false, 300.00), -- Suite is not available
+    (104, 104, 'Single', true, 120.00),
+    (105, 105, 'Double', false, 180.00), -- Double room is not available
+    (106, 106, 'Suite', true, 350.00),
+    (107, 107, 'Single', true, 110.00),
+    (108, 108, 'Double', true, 170.00),
+    (109, 109, 'Suite', false, 400.00), -- Suite is not available
+    (110, 110, 'Single', true, 130.00);
 
 
 -- Insertar nuevas reservas y detalles de reservas
 
--- Reserva 1: Usuario con ID 2, habitación 102, estado "PENDIENTE"
+-- Usuario ID 1: Edward Brown (edward.brown0@example.com) - ADMIN
+-- Reserva 1: Habitación 102
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (2, NOW(), 150.00, '2024-11-01', '2024-11-05', 'PENDIENTE');
+    (1, NOW(), 600.00, '2024-11-01', '2024-11-05', 'PENDIENTE');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (1, 102, 150.00);
 
--- Reserva 2: Usuario con ID 3, habitación 104, estado "CONFIRMADA"
+-- Usuario ID 2: Alice Rodriguez (alice.rodriguez1@example.com) - USER
+-- Reserva 2: Habitación 104
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (3, NOW(), 120.00, '2024-11-10', '2024-11-12', 'CONFIRMADA');
+    (2, NOW(), 240.00, '2024-11-10', '2024-11-12', 'CONFIRMADA');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (2, 104, 120.00);
 
--- Reserva 3: Usuario con ID 4, habitación 106, estado "CANCELADA"
+-- Usuario ID 3: Helen Smith (helen.smith2@example.com) - ADMIN
+-- Reserva 3: Habitación 106
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (4, NOW(), 350.00, '2024-12-01', '2024-12-07', 'CANCELADA');
+    (3, NOW(), 2100.00, '2024-12-01', '2024-12-07', 'CANCELADA');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (3, 106, 350.00);
 
--- Reserva 4: Usuario con ID 5, habitación 107, estado "PENDIENTE"
+-- Usuario ID 4: George Williams (george.williams3@example.com) - USER
+-- Reserva 4: Habitación 107
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (5, NOW(), 110.00, '2024-12-15', '2024-12-17', 'PENDIENTE');
+    (4, NOW(), 220.00, '2024-12-15', '2024-12-17', 'PENDIENTE');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (4, 107, 110.00);
 
--- Reserva 5: Usuario con ID 6, habitaciones 108 y 109, estado "CONFIRMADA"
+-- Usuario ID 5: Bob Williams (bob.williams4@example.com) - USER
+-- Reserva 5: Habitaciones 108 y 109
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (6, NOW(), 570.00, '2024-12-20', '2024-12-25', 'CONFIRMADA');
+    (5, NOW(), 2850.00, '2024-12-20', '2024-12-25', 'CONFIRMADA');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
                                                                     (5, 108, 170.00),
                                                                     (5, 109, 400.00);
 
--- Reserva 6: Usuario con ID 7, habitación 110, estado "PENDIENTE"
+-- Usuario ID 6: George Jones (george.jones5@example.com) - USER
+-- Reserva 6: Habitación 110
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (7, NOW(), 130.00, '2025-01-05', '2025-01-08', 'PENDIENTE');
+    (6, NOW(), 390.00, '2025-01-05', '2025-01-08', 'PENDIENTE');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (6, 110, 130.00);
 
--- Reserva 7: Usuario con ID 8, habitación 101, estado "CONFIRMADA"
+-- Usuario ID 7: Alice Johnson (alice.johnson6@example.com) - ADMIN
+-- Reserva 7: Habitación 101
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (8, NOW(), 100.00, '2025-01-10', '2025-01-12', 'CONFIRMADA');
+    (7, NOW(), 200.00, '2025-01-10', '2025-01-12', 'CONFIRMADA');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (7, 101, 100.00);
 
--- Reserva 8: Usuario con ID 9, habitación 102, estado "CANCELADA"
+-- Usuario ID 8: Charlie Rodriguez (charlie.rodriguez7@example.com) - ADMIN
+-- Reserva 8: Habitación 102
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (9, NOW(), 150.00, '2025-01-15', '2025-01-20', 'CANCELADA');
+    (8, NOW(), 750.00, '2025-01-15', '2025-01-20', 'CANCELADA');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (8, 102, 150.00);
 
--- Reserva 9: Usuario con ID 10, habitaciones 103 y 107, estado "PENDIENTE"
+-- Usuario ID 9: Helen Jones (helen.jones8@example.com) - USER
+-- Reserva 9: Habitaciones 103 y 107
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (10, NOW(), 410.00, '2025-01-22', '2025-01-28', 'PENDIENTE');
+    (9, NOW(), 2460.00, '2025-01-22', '2025-01-28', 'PENDIENTE');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
                                                                     (9, 103, 300.00),
                                                                     (9, 107, 110.00);
 
--- Reserva 10: Usuario con ID 11, habitación 105, estado "CONFIRMADA"
+-- Usuario ID 10: Jenna Brown (jenna.brown9@example.com) - ADMIN
+-- Reserva 10: Habitación 105
 INSERT INTO Reserva (usuario_id, fecha_creacion, total, fecha_inicio, fecha_fin, estado) VALUES
-    (11, NOW(), 180.00, '2025-02-01', '2025-02-03', 'CONFIRMADA');
+    (10, NOW(), 360.00, '2025-02-01', '2025-02-03', 'CONFIRMADA');
 
 INSERT INTO Detalle_Reserva (reserva_id, habitacion_id, precio) VALUES
     (10, 105, 180.00);
+
+
+
 
 
 

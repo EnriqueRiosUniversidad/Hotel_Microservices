@@ -1,4 +1,4 @@
-# cliente
+# hotel-client
 
 ## Project setup
 ```

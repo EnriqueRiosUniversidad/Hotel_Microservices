@@ -1,7 +1,6 @@
 package distri.gestion_habitaciones.service;
 
 import distri.beans.domain.Habitacion;
-import distri.beans.domain.Reserva;
 import distri.beans.dto.HabitacionDTO;
 import distri.gestion_habitaciones.repository.HabitacionRepository;
 import distri.gestion_habitaciones.repository.ReservaRepository;

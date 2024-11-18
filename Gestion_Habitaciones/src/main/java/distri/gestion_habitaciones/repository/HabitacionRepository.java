@@ -41,10 +41,18 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, Long> {
     Optional<Habitacion> findByNumero(int numeroHabitacion);
 
 
-    @Query("SELECT h FROM Habitacion h WHERE h.id NOT IN (" +
-            "SELECT dr.habitacion.id FROM Detalle_Reserva dr WHERE " +
+ /*   @Query("SELECT h FROM Habitacion h WHERE h.id NOT IN (" +
+            "SELECT dr.habitacionId FROM Detalle_Reserva dr WHERE " +
             "(dr.reserva.fechaInicio <= :fechaFin AND dr.reserva.fechaFin >= :fechaInicio)" +
             ") AND h.disponibilidad = true")
+    List<Habitacion> findAvailableRooms(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
+*/
+
+    @Query(value = "SELECT * FROM habitacion h WHERE h.id NOT IN (" +
+            "SELECT dr.habitacion_id FROM detalle_reserva dr " +
+            "JOIN reserva r ON dr.reserva_id = r.id " +
+            "WHERE (r.fecha_inicio <= :fechaFin AND r.fecha_fin >= :fechaInicio)" +
+            ") AND h.disponibilidad = true", nativeQuery = true)
     List<Habitacion> findAvailableRooms(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
 
 

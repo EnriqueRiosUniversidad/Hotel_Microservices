@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
-    @Query("SELECT DISTINCT d.habitacion.id FROM Reserva r JOIN r.detalles d "
+    @Query("SELECT DISTINCT d.habitacionId FROM Reserva r JOIN r.detalles d "
             + "WHERE r.estado != 'CANCELADA' "
             + "AND ((r.fechaInicio <= :fechaFin AND r.fechaFin >= :fechaInicio))")
     List<Long> findHabitacionesReservadasEntreFechas(@Param("fechaInicio") LocalDate fechaInicio,

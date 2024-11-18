@@ -185,7 +185,7 @@ public class ReservaController {
     // 9. Actualizar el ESTADO de una reserva (ROLE_ADMIN)
     //PENDIENTE
     //CONFIRMADA
-    //CANCELADA
+    //CANCELADAa
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping("/{id}/estado")
     public ResponseEntity<?> actualizarEstadoReserva(@PathVariable Long id, @RequestParam EstadoReserva estado) {

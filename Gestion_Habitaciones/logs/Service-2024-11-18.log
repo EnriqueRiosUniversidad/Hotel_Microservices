@@ -1,0 +1,2 @@
+2024-11-18 11:56:15 [http-nio-8082-exec-1] INFO  d.g.service.HabitacionService - Buscando habitaciones con precio entre 100 y 200
+2024-11-18 11:56:15 [http-nio-8082-exec-1] INFO  d.g.service.HabitacionService - Se encontraron 7 habitaciones dentro del rango de precios

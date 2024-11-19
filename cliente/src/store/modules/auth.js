@@ -6,9 +6,11 @@ const state = {
   token: localStorage.getItem('token') || '',
   email: localStorage.getItem('email') || '',
   userRole: localStorage.getItem('userRole') || '',
+  userProfile: null,
 };
 
 const mutations = {
+  //Datos de seguridad
   SET_TOKEN(state, token) {
     state.token = token;
   },
@@ -18,11 +20,19 @@ const mutations = {
   SET_USER_ROLE(state, role) {
     state.userRole = role;
   },
+  //Manejo de errores
   SET_ERROR(state, error) {
     state.error = error;
   },
   CLEAR_ERROR(state) {
     state.error = null;
+  },
+  //Usuario perfil
+  SET_USER_PROFILE(state, profile) {
+    state.userProfile = profile;
+  },
+  CLEAR_USER_PROFILE(state) {
+    state.userProfile = null;
   },
 };
 
@@ -72,14 +82,27 @@ const actions = {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('userRole');
+    commit('CLEAR_USER_PROFILE');
   },
   
+  async fetchUserProfile({ commit }) {
+    try {
+      const response = await http.get('/usuarios/profile');
+      commit('SET_USER_PROFILE', response.data);
+    } catch (error) {
+      console.error('Error al obtener el perfil del usuario:', error);
+      throw error;
+    }
+  },
+
+
 };
 
 const getters = {
   isAuthenticated: (state) => !!state.token,
   email: (state) => state.email,
   userRole: (state) => state.userRole,
+  userProfile: (state) => state.userProfile,
 };
 
 export default {

@@ -7,8 +7,8 @@
       <router-link v-if="isAdmin" class="nav-link" to="/ReservasAdmin">Todas las Reservas</router-link>
 
       <template v-if="isAuthenticated">
-        <router-link class="nav-link" to="/perfil">Perfil</router-link>
-        <button class="logout-button" @click="logout">Logout</button>
+        <router-link class="nav-link" to="/perfil">Mi Perfil</router-link>
+        <button class="logout-button" @click="logoutUser">Logout</button>
       </template>
       <template v-else>
         <router-link class="nav-link" to="/login">Login</router-link>
@@ -31,6 +31,10 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['logout']),
+    logoutUser() {
+      this.logout(); // Llama a la acción para limpiar el estado y el token
+      this.$router.push('/login'); // Redirige al usuario a la página de login
+    },
   },
 };
 </script>

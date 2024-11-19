@@ -100,17 +100,19 @@ export default {
 
 table {
   border-collapse: collapse;
-  width: 80%;
+  width: 100%; /* Asegúrate de que use todo el ancho disponible */
   margin-bottom: 20px;
+  table-layout: auto; /* Ajusta dinámicamente el tamaño de las columnas */
+  overflow-x: auto; /* Habilita el scroll horizontal */
 }
 
-th,
-td {
+th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-  cursor: pointer;
+  word-wrap: break-word; /* Asegúrate de que el texto no se desborde */
 }
+
 
 th {
   background-color: #f2f2f2;

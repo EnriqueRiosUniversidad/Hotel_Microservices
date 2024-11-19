@@ -83,45 +83,26 @@
   </script>
   
 -->
-  
+
 <template>
   <div class="crear-reserva">
     <h1>Registrar Nueva Reserva</h1>
     <form @submit.prevent="enviarReserva">
       <div class="form-group">
         <label for="fechaInicio">Fecha de Inicio:</label>
-        <input
-          type="date"
-          id="fechaInicio"
-          v-model="reserva.fechaInicio"
-          required
-        />
+        <input type="date" id="fechaInicio" v-model="reserva.fechaInicio" required />
       </div>
       <div class="form-group">
         <label for="fechaFin">Fecha de Fin:</label>
-        <input
-          type="date"
-          id="fechaFin"
-          v-model="reserva.fechaFin"
-          required
-        />
+        <input type="date" id="fechaFin" v-model="reserva.fechaFin" required />
       </div>
 
       <div class="habitaciones">
         <h3>Habitaciones Disponibles</h3>
-        <div
-          v-for="habitacion in habitacionesDisponibles"
-          :key="habitacion.id"
-          class="form-group"
-        >
+        <div v-for="habitacion in habitacionesDisponibles" :key="habitacion.id" class="form-group">
           <label>{{ habitacion.numero }} - ${{ habitacion.precio }} por noche</label>
-          <input
-            type="checkbox"
-            :id="'habitacion-' + habitacion.id"
-            v-model="habitacionesSeleccionadas"
-            :value="habitacion"
-            @change="calcularTotalReserva"
-          />
+          <input type="checkbox" :id="'habitacion-' + habitacion.id" v-model="habitacionesSeleccionadas"
+            :value="habitacion" @change="calcularTotalReserva" />
         </div>
       </div>
 
@@ -136,7 +117,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import axios from 'axios';
+import http from '../http';
 
 export default {
   data() {
@@ -153,25 +134,26 @@ export default {
   },
   methods: {
     ...mapActions('reservas', ['crearReserva']),
-    
+
     async obtenerHabitacionesDisponibles() {
-      // Verificar que ambas fechas estén seleccionadas antes de hacer la solicitud
-      if (this.reserva.fechaInicio && this.reserva.fechaFin) {
-        try {
-          const response = await axios.get('http://localhost:8080/habitaciones/disponibles', {
-            params: {
-              fechainicio: this.reserva.fechaInicio,
-              fechafin: this.reserva.fechaFin,
-            },
-          });
-          this.habitacionesDisponibles = response.data.filter(habitacion => habitacion.disponibilidad);
-        } catch (error) {
-          console.error("Error al obtener habitaciones disponibles:", error);
-        }
-      } else {
-        this.habitacionesDisponibles = []; // Si no están ambas fechas, limpiar la lista
-      }
-    },
+  if (this.reserva.fechaInicio && this.reserva.fechaFin) {
+    try {
+      const response = await http.get('/habitaciones/disponibles', {
+        params: {
+          fechaInicio: this.reserva.fechaInicio,
+          fechaFin: this.reserva.fechaFin,
+        },
+      });
+      this.habitacionesDisponibles = response.data.filter(
+        (habitacion) => habitacion.disponibilidad
+      );
+    } catch (error) {
+      console.error('Error al obtener habitaciones disponibles:', error);
+    }
+  } else {
+    this.habitacionesDisponibles = [];
+  }
+},
 
     calcularTotalReserva() {
       const noches = this.calcularNoches();

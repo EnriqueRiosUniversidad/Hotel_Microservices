@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <div class="admin-reservas">
     <h1>Administración de Reservas</h1>
-    <ReservaListaAdmin :reservas="reservas" :totalPages="totalPages" :paginaActual="currentPage"
-      @cambiarEstado="actualizarReservaEstado" @paginaCambiada="cargarReservas" @ordenar="cambiarOrden" />
-      <div>
+
+    <div class="reservas-lista">
+      <ReservaListaAdmin :reservas="reservas" :totalPages="totalPages" :paginaActual="currentPage"
+        @cambiarEstado="actualizarReservaEstado" @paginaCambiada="cargarReservas" @ordenar="cambiarOrden" />
+    </div>
+
+    <div class="paginacion">
       <label for="pageSize">Tamaño de página:</label>
       <select id="pageSize" v-model="pageSize" @change="cargarReservas(0)">
         <option :value="5">5</option>
@@ -71,3 +75,73 @@ export default {
   },
 };
 </script>
+
+
+
+<style scoped>
+.admin-reservas {
+  max-width: 90%; /* Cambia de 800px a 100% */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFCF9D;
+  color: #333;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  overflow-x: auto; /* Para permitir scroll horizontal si es necesario */
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #DE8F5F;
+  /* Título con un tono cálido */
+  margin-bottom: 20px;
+}
+
+.reservas-lista {
+  margin-bottom: 20px;  
+}
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+}
+
+select:focus {
+  outline: none;
+  border-color: #FFB38E;
+  /* Resalta el selector al enfocarlo */
+}
+
+button {
+  background-color: #28a745;
+  /* Botón verde */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #218838;
+  /* Verde más oscuro */
+}
+</style>
